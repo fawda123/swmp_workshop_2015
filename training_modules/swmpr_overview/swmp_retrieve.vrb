@@ -1,0 +1,33 @@
+\frametitle{Overview of the SWMPr package}
+Now we have data in our `workspace' that we can organize/analyze
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{head}\hlstd{(dat)}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp temp f_temp spcond f_spcond sal f_sal do_pct f_do_pct
+## 1 2011-01-01 00:00:00   11   <0>      44     <0>   28  <0>      68     <0>
+## 2 2011-01-01 00:15:00   11   <0>      44     <0>   28  <0>      68     <0>
+## 3 2011-01-01 00:30:00   11   <0>      44     <0>   28  <0>      68     <0>
+## 4 2011-01-01 00:45:00   11   <0>      44     <0>   28  <0>      68     <0>
+## 5 2011-01-01 01:00:00   11   <0>      44     <0>   29  <0>      68     <0>
+## 6 2011-01-01 01:15:00   11   <0>      44     <0>   29  <0>      67     <0>
+##   do_mgl f_do_mgl depth f_depth cdepth f_cdepth level f_level clevel f_clevel
+## 1      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+## 2      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+## 3      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+## 4      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+## 5      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+## 6      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
+##   ph f_ph turb f_turb chlfluor f_chlfluor
+## 1  8 <0>     3   <0>        NA      <-1>
+## 2  8 <0>     3   <0>        NA      <-1>
+## 3  8 <0>     2   <0>        NA      <-1>
+## 4  8 <0>     1   <0>        NA      <-1>
+## 5  8 <0>     2   <0>        NA      <-1>
+## 6  8 <0>     1   <0>        NA      <-1>
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
