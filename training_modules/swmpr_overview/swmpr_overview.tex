@@ -1,4 +1,4 @@
-\documentclass[xcolor=svgnames]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[xcolor=dvipsnames]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -49,7 +49,7 @@
 
 \usepackage{alltt}
 \usetheme{Boadilla}
-\usecolortheme[named=CadetBlue]{structure}
+\usecolortheme[named=CornflowerBlue]{structure}
 \usepackage{graphicx}
 \usepackage{breqn}
 \usepackage{xcolor}
@@ -95,37 +95,27 @@
 \end{frame}
 
 %%%%%%
-\begin{frame}{Objectives and agenda}
+\begin{frame}{Objectives for the session}
 \begin{itemize}
-\onslide<+->
-\item Objectives \\~\\
-\begin{itemize}
-\item What are the various ways data are obtained from SWMP? \\~\\
-\item What are some issues that need to be addressed before importing into a statistical program for time series analysis? \\~\\
-\end{itemize}
-\onslide<+->
-\item Agenda \\~\\
-\begin{itemize}
-\item Brief overview of SWMP network and available data \\~\\
-\item Format and potential issues with output data \\~\\
-\item Retrieving and importing the data \\~\\
-\end{itemize}
+\item Why and what is SWMPr?\\~\\
+\item How can data get from CDMO into R using SWMPr? \\~\\
+\item What is the basic structure of a \texttt{swmpr} data object?\\~\\
+\item What is data organization and how can SWMPr help?
 \end{itemize}
 \end{frame}
 
 %%%%%%
 \begin{frame}{Interactive portion}
-You can follow along later in this module: \\~\\
+We will use the swmpr1.Rproj project for this session \\~\\
 \begin{itemize}
-\item dataset1\\~\\
-\item script1 \\~\\
+\item location on flash drive\\~\\
+\item location online \\~\\
 \end{itemize}
-\Large
-\centerline{\emph{Interactive!}}
+`double-click' the file to open in RStudio...
 \end{frame}
 
 %%%%%%
-\begin{frame}{Overview of SWMP and available data}
+\begin{frame}{Why and what is SWMPr?}
 SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 300 stations in 28 US estuaries \\~\\
 \centerline{\includegraphics[width = 0.8\textwidth]{imgs/NERRS_locations.png}}
 \tiny
@@ -134,176 +124,104 @@ SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous m
 \end{frame}
 
 %%%%%%
-\begin{frame}[t]{Overview of SWMP and available data}
+\begin{frame}[t]{Why and what is SWMPr?}
 CDMO (\href{http://cdmo.baruch.sc.edu/}{link}) is your one-stop shop for retrieving SWMP data \\~\\
 \centerline{\includegraphics[width = \textwidth]{imgs/cdmo_front.png}}
 \end{frame}
 
 %%%%%%
-\begin{frame}{Overview of SWMP and available data}
-A wide range of data can be requested... a few records for one site to all records for multiple sites \\~\\
-Requests can return a lot of data so make sure you have clear objectives \\~\\
-Check the \href{http://cdmo.baruch.sc.edu/data/availableOne.cfm}{available data} before making a request! \\~\\
-\begin{itemize}
-\item station names \\~\\
-\item data types \\~\\
-\item date ranges \\~\\
-\item parameters \\~\\
-\end{itemize}
-\end{frame}
-
-%%%%%%
-\begin{frame}{Format and potential issues with output data}
-\onslide<+->
-To orient yourself, understand the NERRS/SWMP naming convention\\~\\
-\Bigtxt{Site} (reserve), \Bigtxt{station}, and \Bigtxt{parameter type} are identified by a 7 or 8 character name \\~\\
-\onslide<+->
-E.g., elkcwmet \\~\\
-\onslide<+->
-\begin{itemize}
-\item elk: site, Elkhorn Slough \\~\\
-\item cw: station, Caspian Weather Station \\~\\
-\item met: parameter type (weather)
-\end{itemize}
-\end{frame}
-
-%%%%%%
-\begin{frame}{Format and potential issues with output data}
-\onslide<+->
-The fundamental unit of data is the `station' defined by a parameter type \\~\\
-The parameters for a station are specific to the parameter type \\~\\
-\onslide<+->
-\begin{columns}[t]
-\begin{column}{0.3\textwidth}
-\Bigtxt{Nutrients} \\~\\
-po4f, chla\_n, no3f, no2f, nh4f, no23f, ke\_n, urea
-\end{column}
-\begin{column}{0.3\textwidth}
-\Bigtxt{Water quality} \\~\\
-temp, spcond, sal, do\_pct, do\_mgl, depth, cdepth, level, clevel, ph, turb, chlfluor
-\end{column}
-\begin{column}{0.3\textwidth}
-\Bigtxt{Meteorology} \\~\\
-atemp, rh, bp, wspd, maxwspd, wdir, sdwdir, totpar, totprcp, cumprcp, totsorad \\~\\
-\end{column}
-\end{columns}
-\end{frame}
-
-%%%%%%
-\begin{frame}{Format and potential issues with output data}
+\begin{frame}{Why and what is SWMPr?}
 The raw data will look like this...\\~\\
 \centerline{\includegraphics[width = 0.9\textwidth]{imgs/qaqc_ex.png}}
 \end{frame}
 
+% %%%%%%
+% \begin{frame}[t]{Why and what is SWMPr?}
+% \onslide<+->
+% How do we want to use the data? \\~\\
+% \onslide<+->
+% \begin{itemize}
+% \item What has happened at my site over time? \\~\\
+% \item Are there differences between sites? \\~\\
+% \item Can we remove seasonal trends? \\~\\
+% \item Are there differences between parametes? \\~\\
+% \item Others?
+% \end{itemize}
+% \end{frame}
+
 %%%%%%
-\begin{frame}{Format and potential issues with output data}
+\begin{frame}[t]{Why and what is SWMPr?}
 \onslide<+->
-What are the challenges for evaluating SWMP data?? \\~\\
+What are the challenges for evaluating SWMP data? \\~\\
 \onslide<+->
 \begin{itemize}
-\item Knowing what we want (I can't help with this) \\~\\
-\onslide<+->
+\item Knowing what we want \\~\\
 \item Dealing with QAQC columns and removing `bad' observations \\~\\
-\onslide<+->
 \item Data we don't want... extra columns or irrelevant parameters \\~\\
-\onslide<+->
 \item Combining data for comparison\\~\\
-\onslide<+-> 
 \item Issues inherent with time series, e.g., missing data \\~\\
-\end{itemize}
-\onslide<+->
-\centerline{\emph{We will learn how to handle most of these challenges!}}
-\end{frame}
-
-%%%%%%
-\begin{frame}{Overview of the SWMPr package}
-\onslide<+->
-\textbf{\emph{What}}: An R package for retrieving, organizing and analyzing SWMP data \\~\\
-\onslide<+->
-\Bigtxt{Why}: There are many challenges for working with SWMP data... a toolkit for addressing these challenges will be useful (I hope!) \\~\\
-\onslide<+->
-\Bigtxt{How}: \\~\\
-\begin{itemize}
-\item Install R/RStudio on your computer (done already!) \\~\\
-\item Install the SWMPr package (dont already!) \\~\\
-\item Use the SWMPr functions to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data 
+\item Others?
 \end{itemize}
 \end{frame}
 
 %%%%%%
-\begin{frame}{Overview of the SWMPr package}
-This is where SWMPr lives - \href{https://github.com/fawda123/SWMPr}{https://github.com/fawda123/SWMPr}\\~\\
-\centerline{\includegraphics[width = 0.9\textwidth]{imgs/swmpr_github.png}}
+\begin{frame}{Why and what is SWMPr?}
+\onslide<+->
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/swmpr_logo.png}}
+\vspace{0.2in}
+\textbf{\emph{What}}: An R package to \Bigtxt{augment} existing CDMO services and to provide a \Bigtxt{bridge} to analysis\\~\\
+\onslide<+->
+\Bigtxt{Why}: There are many challenges working with SWMP data... a toolkit for addressing these challenges will be useful \\~\\
+\onslide<+->
+\Bigtxt{How}: Use the SWMPr functions to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data 
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Overview of the SWMPr package}
-What is provided in the SWMPr package? \\~\\
-\begin{columns}[t]
-\begin{column}{0.3\textwidth}
-\Bigtxt{Retrieve}
+\begin{frame}[fragile]{Why and what is SWMPr?}
+Some housekeeping...
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{all_params}
-\hlstd{all_params_dtrng}
-\hlstd{single_param}
-\hlstd{import_local}
+\hlcom{# install from CRAN (only do once)}
+\hlkwd{install.packages}\hlstd{(}\hlstr{'SWMPr'}\hlstd{)}
+
+\hlcom{# load for your current session}
+\hlkwd{library}\hlstd{(SWMPr)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\end{column}
-\begin{column}{0.3\textwidth}
-\Bigtxt{Organize}
-\begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{qaqc.swmpr}
-\hlstd{qaqcchk.swmpr}
-\hlstd{subset.swmpr}
-\hlstd{setstep.swmpr}
-\hlstd{comb.swmpr}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-\end{column}
-\begin{column}{0.3\textwidth}
-\Bigtxt{Analyze}
-\begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{aggregate.swmpr}
-\hlstd{smoother.swmpr}
-\hlstd{na.approx.swmpr}
-\hlstd{plot.swmpr}
-\hlstd{hist.swmpr}
-\hlstd{lines.swmpr}
-\hlstd{decomp.swmpr}
-\hlstd{map_reserve}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-\end{column}
-\end{columns}
-\vspace{0.15in}
-Built around the concept of \Bigtxt{object-oriented programming} - retrieval functions return a data type with specific methods to organize and analyze
+\url{https://cran.r-project.org/web/packages/SWMPr/index.html}
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Overview of the SWMPr package}
-To view the help file for any function (including examples for most):
+\begin{frame}[fragile]{Why and what is SWMPr?}
+\onslide<+->
+Uses an \Bigtxt{object-oriented} structure... data are imported into R as a \texttt{swmpr} data object, with functions built to use this object\\~\\
+What are the \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} functions? \\~\\
+Run this code one line at a time... What comes up?
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlopt{?}\hlstd{all_params}
+\hlkwd{help.search}\hlstd{(}\hlstr{'retrieve'}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{'SWMPr'}\hlstd{)}
+\hlkwd{help.search}\hlstd{(}\hlstr{'organize'}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{'SWMPr'}\hlstd{)}
+\hlkwd{help.search}\hlstd{(}\hlstr{'analyze'}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{'SWMPr'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\centerline{\includegraphics[width = 0.8\textwidth]{imgs/help_ex.png}}
+\onslide<+->
+What about this?
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlopt{?}\hlstd{import_local}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Any useful information?
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Overview of the SWMPr package}
+\begin{frame}[fragile]{Getting SWMP data into R}
 Let's get some data into R!\\~\\
 The \Bigtxt{retrieval} functions do two things: \\~\\
 \begin{columns}[t]
@@ -315,6 +233,8 @@ Import data directly from the CDMO:
 \hlstd{all_params}
 \hlstd{all_params_dtrng}
 \hlstd{single_param}
+\hlstd{site_codes}
+\hlstd{site_codes_ind}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -329,73 +249,130 @@ Import data from a local path:
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Allows import of data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/aqs/zips.cfm}{zip downloads} feature
+Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/aqs/zips.cfm}{zip downloads} feature
 \end{column}
 \end{columns}
 \end{frame}
 
 %%%%%%
-\begin{frame}{Overview of the SWMPr package}
-After unzipping, data from \href{http://cdmo.baruch.sc.edu/aqs/zips.cfm}{zip downloads} will have separate .csv files for each station and year\\~\\
-\centerline{\includegraphics[width = 0.8\textwidth]{imgs/zips_ex.png}}
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Overview of the SWMPr package}
-Use the following to import some data into R... \\~\\
-Open script1.R, change the path to where you have the folder `dataset1'
+\begin{frame}[fragile]{Getting SWMP data into R}
+\onslide<+->
+The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
+Let's import some data from that folder...
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# get data for apacpwq, all years}
 
 \hlcom{# location of data}
-\hlstd{mypath} \hlkwb{<-} \hlstr{'C:/data/dataset1'}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
 
 \hlcom{# import and assign to 'dat'}
 \hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apacpwq'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\onslide<+->
+What about this?
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dat2} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apacp2012'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
+\hlstd{dat3} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbnut'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
 
-The console will return some informative text...
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, shrink]{Overview of the SWMPr package}
-Now we have data in our `workspace' that we can organize/analyze
-
+\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object}
+\onslide<+->
+Now we have data in our `workspace' that we can organize/analyze \\~\\
+Try running the following...
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{head}\hlstd{(dat)}
+\hlkwd{tail}\hlstd{(dat)}
+\hlkwd{View}\hlstd{(dat)}
+\hlkwd{str}\hlstd{(dat)}
+\hlkwd{attributes}\hlstd{(dat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+How are the data organized?  \\~\\
+What are the column names? \\~\\
+What are the attributes? \\~\\
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Structure of the \texttt{swmpr} data object}
+The \texttt{swmpr} object is a \texttt{data.frame} and a list of attributes 
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{head}\hlstd{(dat,} \hlnum{3}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
 ##         datetimestamp temp f_temp spcond f_spcond sal f_sal do_pct f_do_pct
 ## 1 2011-01-01 00:00:00   11   <0>      44     <0>   28  <0>      68     <0> 
 ## 2 2011-01-01 00:15:00   11   <0>      44     <0>   28  <0>      68     <0> 
 ## 3 2011-01-01 00:30:00   11   <0>      44     <0>   28  <0>      68     <0> 
-## 4 2011-01-01 00:45:00   11   <0>      44     <0>   28  <0>      68     <0> 
-## 5 2011-01-01 01:00:00   11   <0>      44     <0>   29  <0>      68     <0> 
-## 6 2011-01-01 01:15:00   11   <0>      44     <0>   29  <0>      67     <0> 
 ##   do_mgl f_do_mgl depth f_depth cdepth f_cdepth level f_level clevel f_clevel
 ## 1      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
 ## 2      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
 ## 3      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
-## 4      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
-## 5      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
-## 6      6     <0>      2    <0>       2     <3>     NA   <-1>      NA       NA
 ##   ph f_ph turb f_turb chlfluor f_chlfluor
 ## 1  8 <0>     3   <0>        NA      <-1> 
 ## 2  8 <0>     3   <0>        NA      <-1> 
-## 3  8 <0>     2   <0>        NA      <-1> 
-## 4  8 <0>     1   <0>        NA      <-1> 
-## 5  8 <0>     2   <0>        NA      <-1> 
-## 6  8 <0>     1   <0>        NA      <-1>
+## 3  8 <0>     2   <0>        NA      <-1>
+\end{verbatim}
+\begin{alltt}
+\hlkwd{names}\hlstd{(}\hlkwd{attributes}\hlstd{(dat))}
+\end{alltt}
+\begin{verbatim}
+## [1] "names"       "row.names"   "class"       "station"     "parameters" 
+## [6] "qaqc_cols"   "date_rng"    "timezone"    "stamp_class"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{attr}\hlstd{(dat,} \hlstr{'parameters'}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##  [1] "temp"     "spcond"   "sal"      "do_pct"   "do_mgl"   "depth"   
+##  [7] "cdepth"   "level"    "clevel"   "ph"       "turb"     "chlfluor"
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
 \end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+First problem is solved... we know how to get SWMP data from CDMO into R: \\~\\
+\begin{itemize}
+\item Download a dataset from zip downloads \\~\\
+\item Find where the data have downloaded \\~\\
+\item Import using \texttt{import_local} \\~\\
+\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
+\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\end{itemize}
+Now we can think about preprocessing or organizing prior to analysis
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
+\begin{itemize}
+\item Download a dataset from zip downloads \\~\\
+\item Find where the data have downloaded \\~\\
+\item Import using \texttt{import_local} \\~\\
+\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
+\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\end{itemize}
+Now we can think about preprocessing or organizing prior to analysis
+\end{frame}
+
 
 %%%%%%
 \begin{frame}

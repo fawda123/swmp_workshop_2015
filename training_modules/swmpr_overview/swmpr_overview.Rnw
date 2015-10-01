@@ -1,0 +1,286 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+
+\begin{document}
+
+\title[SWMPr overview, retrieve, and organize]{SWMPr overview, retrieve, and organize}
+
+\author[M. Beck, T. O'Brien]{Marcus W. Beck\inst{1} \and Todd D. O'Brien\inst{2}}
+
+\date{}
+
+\institute[]{\inst{1} ORISE, USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov} \and \inst{2} NOAA/NMFS COPEPOD Project\\ Email: \href{todd.obrien@noaa.gov}{todd.obrien@noaa.gov}}
+
+% knitr setup
+<<setup, include = F, cache = F>>=
+library(knitr)
+
+# set global chunk options
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize')
+options(replace.assign=TRUE,width=80,digits=1)
+@
+
+% load SWMPr from local
+<<swmpr, eval = T, echo = F, cache = F, message = F>>=
+devtools::load_all('M:/docs/SWMPr')
+@
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+%%%%%%
+\begin{frame}{Objectives for the session}
+\begin{itemize}
+\item Why and what is SWMPr?\\~\\
+\item How can data get from CDMO into R using SWMPr? \\~\\
+\item What is the basic structure of a \texttt{swmpr} data object?\\~\\
+\item What is data organization and how can SWMPr help?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+We will use the swmpr1.Rproj project for this session \\~\\
+\begin{itemize}
+\item location on flash drive\\~\\
+\item location online \\~\\
+\end{itemize}
+`double-click' the file to open in RStudio...
+\end{frame}
+
+%%%%%%
+\begin{frame}{Why and what is SWMPr?}
+SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 300 stations in 28 US estuaries \\~\\
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/NERRS_locations.png}}
+\tiny
+\flushright
+\href{http://nerrs.noaa.gov/ReservesMap.aspx}{http://nerrs.noaa.gov/ReservesMap.aspx}
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Why and what is SWMPr?}
+CDMO (\href{http://cdmo.baruch.sc.edu/}{link}) is your one-stop shop for retrieving SWMP data \\~\\
+\centerline{\includegraphics[width = \textwidth]{imgs/cdmo_front.png}}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Why and what is SWMPr?}
+The raw data will look like this...\\~\\
+\centerline{\includegraphics[width = 0.9\textwidth]{imgs/qaqc_ex.png}}
+\end{frame}
+
+% %%%%%%
+% \begin{frame}[t]{Why and what is SWMPr?}
+% \onslide<+->
+% How do we want to use the data? \\~\\
+% \onslide<+->
+% \begin{itemize}
+% \item What has happened at my site over time? \\~\\
+% \item Are there differences between sites? \\~\\
+% \item Can we remove seasonal trends? \\~\\
+% \item Are there differences between parametes? \\~\\
+% \item Others?
+% \end{itemize}
+% \end{frame}
+
+%%%%%%
+\begin{frame}[t]{Why and what is SWMPr?}
+\onslide<+->
+What are the challenges for evaluating SWMP data? \\~\\
+\onslide<+->
+\begin{itemize}
+\item Knowing what we want \\~\\
+\item Dealing with QAQC columns and removing `bad' observations \\~\\
+\item Data we don't want... extra columns or irrelevant parameters \\~\\
+\item Combining data for comparison\\~\\
+\item Issues inherent with time series, e.g., missing data \\~\\
+\item Others?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Why and what is SWMPr?}
+\onslide<+->
+\centerline{\includegraphics[width = 0.8\textwidth]{imgs/swmpr_logo.png}}
+\vspace{0.2in}
+\textbf{\emph{What}}: An R package to \Bigtxt{augment} existing CDMO services and to provide a \Bigtxt{bridge} to analysis\\~\\
+\onslide<+->
+\Bigtxt{Why}: There are many challenges working with SWMP data... a toolkit for addressing these challenges will be useful \\~\\
+\onslide<+->
+\Bigtxt{How}: Use the SWMPr functions to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Why and what is SWMPr?}
+Some housekeeping...
+<<eval = F>>=
+# install from CRAN (only do once)
+install.packages('SWMPr')
+
+# load for your current session
+library(SWMPr)
+@
+\url{https://cran.r-project.org/web/packages/SWMPr/index.html}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Why and what is SWMPr?}
+\onslide<+->
+Uses an \Bigtxt{object-oriented} structure... data are imported into R as a \texttt{swmpr} data object, with functions built to use this object\\~\\
+What are the \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} functions? \\~\\
+Run this code one line at a time... What comes up?
+<<eval = F>>=
+help.search('retrieve', package = 'SWMPr')
+help.search('organize', package = 'SWMPr')
+help.search('analyze', package = 'SWMPr')
+@
+\onslide<+->
+What about this?
+<<eval = F>>=
+?import_local
+@
+Any useful information?
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Getting SWMP data into R}
+Let's get some data into R!\\~\\
+The \Bigtxt{retrieval} functions do two things: \\~\\
+\begin{columns}[t]
+\begin{column}{0.4\textwidth}
+Import data directly from the CDMO:
+<<eval = F>>=
+all_params
+all_params_dtrng
+single_param
+site_codes
+site_codes_ind
+@
+These functions require \href{http://cdmo.baruch.sc.edu/webservices.cfm}{registering your IP address}  with CDMO
+\end{column}
+\begin{column}{0.4\textwidth}
+Import data from a local path:
+<<eval = F>>=
+import_local
+@
+Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/aqs/zips.cfm}{zip downloads} feature
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Getting SWMP data into R}
+\onslide<+->
+The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
+Let's import some data from that folder...
+<<eval = T, results = 'hide'>>=
+# get data for apacpwq, all years
+
+# location of data
+mypath <- 'zip_ex'
+
+# import and assign to 'dat'
+dat <- import_local(mypath, 'apacpwq', trace = T) 
+@
+\onslide<+->
+What about this?
+<<eval = F>>=
+dat2 <- import_local(mypath, 'apacp2012', trace = T)
+dat3 <- import_local(mypath, 'apadbnut', trace = T)
+@
+
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object}
+\onslide<+->
+Now we have data in our `workspace' that we can organize/analyze \\~\\
+Try running the following...
+<<eval = F, echo = T>>=
+head(dat)
+tail(dat)
+View(dat)
+str(dat)
+attributes(dat)
+@
+\onslide<+->
+How are the data organized?  \\~\\
+What are the column names? \\~\\
+What are the attributes? \\~\\
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Structure of the \texttt{swmpr} data object}
+The \texttt{swmpr} object is a \texttt{data.frame} and a list of attributes 
+<<eval = T, echo = T, size = 'scriptsize'>>=
+head(dat, 3)
+names(attributes(dat))
+attr(dat, 'parameters')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+First problem is solved... we know how to get SWMP data from CDMO into R: \\~\\
+\begin{itemize}
+\item Download a dataset from zip downloads \\~\\
+\item Find where the data have downloaded \\~\\
+\item Import using \texttt{import_local} \\~\\
+\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
+\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\end{itemize}
+Now we can think about preprocessing or organizing prior to analysis
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
+\begin{itemize}
+\item Download a dataset from zip downloads \\~\\
+\item Find where the data have downloaded \\~\\
+\item Import using \texttt{import_local} \\~\\
+\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
+\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\end{itemize}
+Now we can think about preprocessing or organizing prior to analysis
+\end{frame}
+
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+\end{document}

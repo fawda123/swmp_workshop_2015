@@ -1,0 +1,10 @@
+\frametitle{Data organization with SWMPr}
+Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
+\begin{itemize}
+\item Download a dataset from zip downloads \\~\\
+\item Find where the data have downloaded \\~\\
+\item Import using \texttt{import_local} \\~\\
+\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
+\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\end{itemize}
+Now we can think about preprocessing or organizing prior to analysis
