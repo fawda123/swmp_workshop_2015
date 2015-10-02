@@ -65,12 +65,16 @@ devtools::load_all('M:/docs/SWMPr')
 
 %%%%%%
 \begin{frame}{Interactive portion}
-We will use the swmpr1.Rproj project for this session \\~\\
+\onslide<+->
+We will use the swmpr1.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
 \item location on flash drive\\~\\
 \item location online \\~\\
 \end{itemize}
-`double-click' the file to open in RStudio...
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+Don't forget to use your stickies: {\color{green} green} for done/ok, {\color{red} red} for problem
 \end{frame}
 
 %%%%%%
@@ -149,7 +153,7 @@ library(SWMPr)
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Why and what is SWMPr?}
+\begin{frame}[fragile]{Why and what is SWMPr? \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 Uses an \Bigtxt{object-oriented} structure... data are imported into R as a \texttt{swmpr} data object, with functions built to use this object\\~\\
 What are the \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} functions? \\~\\
@@ -194,7 +198,7 @@ Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/a
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Getting SWMP data into R}
+\begin{frame}[fragile]{Getting SWMP data into R \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
 Let's import some data from that folder...
@@ -217,7 +221,7 @@ dat3 <- import_local(mypath, 'apadbnut', trace = T)
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object}
+\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 Now we have data in our `workspace' that we can organize/analyze \\~\\
 Try running the following...
@@ -231,7 +235,7 @@ attributes(dat)
 \onslide<+->
 How are the data organized?  \\~\\
 What are the column names? \\~\\
-What are the attributes? \\~\\
+What are the attributes?
 \end{frame}
 
 %%%%%%
@@ -245,7 +249,7 @@ attr(dat, 'parameters')
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+\begin{frame}[fragile]{Data organization with SWMPr}
 First problem is solved... we know how to get SWMP data from CDMO into R: \\~\\
 \begin{itemize}
 \item Download a dataset from zip downloads \\~\\
@@ -258,7 +262,7 @@ Now we can think about preprocessing or organizing prior to analysis
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+\begin{frame}[fragile]{Data organization with SWMPr}
 Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
 \begin{itemize}
 \item Download a dataset from zip downloads \\~\\
@@ -270,6 +274,249 @@ Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
 Now we can think about preprocessing or organizing prior to analysis
 \end{frame}
 
+%%%%%%
+\begin{frame}[t]{Data organization with SWMPr}
+\onslide<+->
+What are the challenges for evaluating SWMP data? \\~\\
+\onslide<+->
+\begin{itemize}
+\item Knowing what we want \\~\\
+\item Dealing with QAQC columns and removing `bad' observations \\~\\
+\item Data we don't want... extra columns or irrelevant parameters \\~\\
+\item Combining data for comparison\\~\\
+\item Issues inherent with time series, e.g., missing data \\~\\
+\item Others?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Take a few minutes to acquint yourself with the \Bigtxt{organization} functions:
+<<eval = F>>=
+help.search('organize', package = 'SWMPr')
+@
+\onslide<+->
+Which function would you use first? \\~\\
+Which would you use to reduce data volume or select certain variables? \\~\\
+Can any be used to combine \texttt{swmpr} data objects? 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Perhaps you want to deal with QAQC columns first... \\~\\
+From the zips folder, import all of the weather data for apaebmet (\texttt{?import\_local})
+\onslide<+->
+<<eval = T>>=
+# import data 
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'apaebmet') 
+@
+\onslide<+->
+View the data, what are the columns? \\~\\
+Try running \texttt{qaqc} (\texttt{?qaqc}) and view again, what happened?
+\onslide<+->
+<<eval = F>>=
+View(dat)
+dat2 <- qaqc(dat)
+View(dat2)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Try playing with the \texttt{qaqc\_keep} argument (\texttt{?qaqc})... \\~\\
+How are these different?
+\onslide<+->
+<<eval = T>>=
+# different options for qaqc
+dat2 <- qaqc(dat)
+dat3 <- qaqc(dat, qaqc_keep = c('0', '-1'))
+dat4 <- qaqc(dat, qaqc_keep = NULL)
+dat5 <- qaqc(dat, qaqc_keep = 'CSM')
+@
+Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
+<<eval = F>>=
+qaqcchk(dat)
+qaqcchk(dat2)
+qaqcchk(dat3)
+qaqcchk(dat4)
+qaqcchk(dat5)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}} 
+\onslide<+->
+We'll continue with the water quality data for apawq - import again and run the \texttt{qaqc} function
+\onslide<+->
+<<>>=
+# import apawq
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'apadbwq')
+dat <- qaqc(dat)
+@
+\onslide<+->
+What is the next logical step after dealing with QAQC values? \\~\\
+How would we further want to organize the data? \\~\\
+Maybe we want to subset the data... 
+<<eval = F>>=
+# view help file
+?subset.swmpr
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+The \texttt{subset} function has several arguments (help file \texttt{?subset.swmpr})\\~\\
+Not all are necessary for every task \\~\\
+\begin{itemize}
+\item \texttt{swmpr\_in}: input data (\texttt{swmpr} object)
+\item \texttt{subset}: dates to keep
+\item \texttt{select}: parameters to keep
+\item \texttt{operator}: less than, greater than, etc. if only one date in subset
+\item \texttt{rem\_rows}: remove empty rows
+\item \texttt{rem\_cols}: remove empty columns \\~\\
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+\onslide<+->
+The \texttt{select} argument of \texttt{subset} is used to select parameters of interest - one to many
+<<>>=
+# select the DO column
+tmp <- subset(dat, select = 'do_mgl')
+head(tmp)
+@
+Selecting more than one column...
+\onslide<+->
+<<eval = F>>=
+# select DO and salinity
+tmp <- subset(dat, select = c('do_mgl', 'sal'))
+head(tmp)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+The \texttt{subset} argument of \texttt{subset.swmpr} selects a date range \\~\\
+The dates must have a specific format: `YYYY-mm-dd HH:MM'
+<<>>=
+# select a date range, July 2012
+dates <- c('2012-07-01 12:00', '2012-07-31 6:30')
+tmp <- subset(dat, subset = dates)
+head(tmp) # view first six rows
+@
+\end{frame}
+
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Import the weather data at apaeb
+\onslide<2->
+<<eval = F>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'apaebmet')
+@
+\vspace{0.1in}
+\item \onslide<1->
+Deal with QAQC columns
+\onslide<3->
+<<eval = F>>=
+tmp <- qaqc(dat)
+@
+\vspace{0.1in}
+\item \onslide<1->
+Select two columns of interest
+\onslide<4->
+<<eval = F>>=
+tmp <- subset(tmp, select = c('temp', 'wind'))
+@
+\vspace{0.1in}
+\item \onslide<1->
+Subset a date range
+\onslide<5->
+<<eval = F>>=
+dates <- c('2012-01-01 0:0', '2012-01-31 0:0')
+tmp <- subset(tmp, subset = dates)
+@
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Bonus: What if we want to select all values before or after a date?  \\~\\
+See \texttt{?subset.swmpr}, requires the \texttt{operator} argument
+\onslide<+->
+<<eval = F>>=
+# get observations for 2013
+dates <- '2013-01-01 00:00'
+tmp <- subset(dat, subset = dates, operator = '>=')
+head(tmp)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+A final nod to the \texttt{comb} function \\~\\
+Run the following, view the results, discuss with your neighbors:
+<<eval = F>>=
+mypath <- 'zip_ex'
+dat_met <- import_local(mypath, 'apaebmet')
+dat_met <- qaqc(dat_met)
+dat_wq <- import_local(mypath, 'apadbwq')
+dat_wq <- qaqc(dat_wq)
+
+# what does this do?
+tmp1 <- comb(dat_wq, dat_met, timestep = 120)
+
+# what does this do?
+tmp2 <- setstep(dat_wq, timestep = 60)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+A final nod to the \texttt{comb} and \texttt{setstep} functions \\~\\
+Run the following, view the results, discuss with your neighbors:
+<<eval = F>>=
+mypath <- 'zip_ex'
+dat_met <- import_local(mypath, 'apaebmet')
+dat_met <- qaqc(dat_met)
+dat_wq <- import_local(mypath, 'apadbwq')
+dat_wq <- qaqc(dat_wq)
+
+# what does this do?
+tmp1 <- comb(dat_wq, dat_met, timestep = 120)
+@
+Now try this...
+<<eval = F>>=
+tmp2 <- setstep(dat_wq, timestep = 60)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Summary}
+Now you have an idea of how to organize SWMP data for analysis!\\~\\
+Here's what we did: \\~\\
+\begin{itemize}
+\item \Bigtxt{Import} SWMP data into R
+\item Evaluate and \Bigtxt{handle QAQC} flags in the data 
+\item \Bigtxt{Subset} to select variables or time ranges of interest 
+\item \Bigtxt{Combine} data for comparison or data simplification \\~\\
+\end{itemize}
+Consult the SWMP cookboook for an example workflow\\~\\
+Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
+After break... what are some ways we can visualize or analyze the data?
+\end{frame}
 
 %%%%%%
 \begin{frame}

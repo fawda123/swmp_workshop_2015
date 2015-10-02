@@ -1,10 +1,12 @@
-\frametitle{Data organization with SWMPr}
-Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
+\frametitle{Summary}
+Now you have an idea of how to organize SWMP data for analysis!\\~\\
+Here's what we did: \\~\\
 \begin{itemize}
-\item Download a dataset from zip downloads \\~\\
-\item Find where the data have downloaded \\~\\
-\item Import using \texttt{import_local} \\~\\
-\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
-\item Lost? Check the help files: \texttt{?import\_local}\\~\\
+\item \Bigtxt{Import} SWMP data into R
+\item Evaluate and \Bigtxt{handle QAQC} flags in the data
+\item \Bigtxt{Subset} to select variables or time ranges of interest
+\item \Bigtxt{Combine} data for comparison or data simplification \\~\\
 \end{itemize}
-Now we can think about preprocessing or organizing prior to analysis
+Consult the SWMP cookboook for an example workflow\\~\\
+Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
+After break... what are some ways we can visualize or analyze the data?

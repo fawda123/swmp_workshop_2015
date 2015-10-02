@@ -106,12 +106,16 @@
 
 %%%%%%
 \begin{frame}{Interactive portion}
-We will use the swmpr1.Rproj project for this session \\~\\
+\onslide<+->
+We will use the swmpr1.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
 \item location on flash drive\\~\\
 \item location online \\~\\
 \end{itemize}
-`double-click' the file to open in RStudio...
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+Don't forget to use your stickies: {\color{green} green} for done/ok, {\color{red} red} for problem
 \end{frame}
 
 %%%%%%
@@ -194,7 +198,7 @@ Some housekeeping...
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Why and what is SWMPr?}
+\begin{frame}[fragile]{Why and what is SWMPr? \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 Uses an \Bigtxt{object-oriented} structure... data are imported into R as a \texttt{swmpr} data object, with functions built to use this object\\~\\
 What are the \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} functions? \\~\\
@@ -255,7 +259,7 @@ Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/a
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Getting SWMP data into R}
+\begin{frame}[fragile]{Getting SWMP data into R \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
 Let's import some data from that folder...
@@ -286,7 +290,7 @@ What about this?
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object}
+\begin{frame}[fragile]{Structure of the \texttt{swmpr} data object \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 Now we have data in our `workspace' that we can organize/analyze \\~\\
 Try running the following...
@@ -304,7 +308,7 @@ Try running the following...
 \onslide<+->
 How are the data organized?  \\~\\
 What are the column names? \\~\\
-What are the attributes? \\~\\
+What are the attributes?
 \end{frame}
 
 %%%%%%
@@ -348,7 +352,7 @@ The \texttt{swmpr} object is a \texttt{data.frame} and a list of attributes
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+\begin{frame}[fragile]{Data organization with SWMPr}
 First problem is solved... we know how to get SWMP data from CDMO into R: \\~\\
 \begin{itemize}
 \item Download a dataset from zip downloads \\~\\
@@ -361,7 +365,7 @@ Now we can think about preprocessing or organizing prior to analysis
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, shrink]{Data organization with SWMPr}
+\begin{frame}[fragile]{Data organization with SWMPr}
 Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
 \begin{itemize}
 \item Download a dataset from zip downloads \\~\\
@@ -373,6 +377,346 @@ Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
 Now we can think about preprocessing or organizing prior to analysis
 \end{frame}
 
+%%%%%%
+\begin{frame}[t]{Data organization with SWMPr}
+\onslide<+->
+What are the challenges for evaluating SWMP data? \\~\\
+\onslide<+->
+\begin{itemize}
+\item Knowing what we want \\~\\
+\item Dealing with QAQC columns and removing `bad' observations \\~\\
+\item Data we don't want... extra columns or irrelevant parameters \\~\\
+\item Combining data for comparison\\~\\
+\item Issues inherent with time series, e.g., missing data \\~\\
+\item Others?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Take a few minutes to acquint yourself with the \Bigtxt{organization} functions:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{help.search}\hlstd{(}\hlstr{'organize'}\hlstd{,} \hlkwc{package} \hlstd{=} \hlstr{'SWMPr'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+Which function would you use first? \\~\\
+Which would you use to reduce data volume or select certain variables? \\~\\
+Can any be used to combine \texttt{swmpr} data objects? 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Perhaps you want to deal with QAQC columns first... \\~\\
+From the zips folder, import all of the weather data for apaebmet (\texttt{?import\_local})
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# import data }
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apaebmet'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+View the data, what are the columns? \\~\\
+Try running \texttt{qaqc} (\texttt{?qaqc}) and view again, what happened?
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{View}\hlstd{(dat)}
+\hlstd{dat2} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
+\hlkwd{View}\hlstd{(dat2)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Try playing with the \texttt{qaqc\_keep} argument (\texttt{?qaqc})... \\~\\
+How are these different?
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# different options for qaqc}
+\hlstd{dat2} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
+\hlstd{dat3} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat,} \hlkwc{qaqc_keep} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'0'}\hlstd{,} \hlstr{'-1'}\hlstd{))}
+\hlstd{dat4} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat,} \hlkwc{qaqc_keep} \hlstd{=} \hlkwa{NULL}\hlstd{)}
+\hlstd{dat5} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat,} \hlkwc{qaqc_keep} \hlstd{=} \hlstr{'CSM'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qaqcchk}\hlstd{(dat)}
+\hlkwd{qaqcchk}\hlstd{(dat2)}
+\hlkwd{qaqcchk}\hlstd{(dat3)}
+\hlkwd{qaqcchk}\hlstd{(dat4)}
+\hlkwd{qaqcchk}\hlstd{(dat5)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}} 
+\onslide<+->
+We'll continue with the water quality data for apawq - import again and run the \texttt{qaqc} function
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# import apawq}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
+\hlstd{dat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+What is the next logical step after dealing with QAQC values? \\~\\
+How would we further want to organize the data? \\~\\
+Maybe we want to subset the data... 
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# view help file}
+\hlopt{?}\hlstd{subset.swmpr}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+The \texttt{subset} function has several arguments (help file \texttt{?subset.swmpr})\\~\\
+Not all are necessary for every task \\~\\
+\begin{itemize}
+\item \texttt{swmpr\_in}: input data (\texttt{swmpr} object)
+\item \texttt{subset}: dates to keep
+\item \texttt{select}: parameters to keep
+\item \texttt{operator}: less than, greater than, etc. if only one date in subset
+\item \texttt{rem\_rows}: remove empty rows
+\item \texttt{rem\_cols}: remove empty columns \\~\\
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+\onslide<+->
+The \texttt{select} argument of \texttt{subset} is used to select parameters of interest - one to many
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# select the DO column}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{select} \hlstd{=} \hlstr{'do_mgl'}\hlstd{)}
+\hlkwd{head}\hlstd{(tmp)}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp do_mgl
+## 1 2011-01-01 00:00:00     NA
+## 2 2011-01-01 00:15:00     NA
+## 3 2011-01-01 00:30:00     NA
+## 4 2011-01-01 00:45:00     NA
+## 5 2011-01-01 01:00:00     NA
+## 6 2011-01-01 01:15:00     NA
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+Selecting more than one column...
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# select DO and salinity}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'do_mgl'}\hlstd{,} \hlstr{'sal'}\hlstd{))}
+\hlkwd{head}\hlstd{(tmp)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr}
+The \texttt{subset} argument of \texttt{subset.swmpr} selects a date range \\~\\
+The dates must have a specific format: `YYYY-mm-dd HH:MM'
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# select a date range, July 2012}
+\hlstd{dates} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'2012-07-01 12:00'}\hlstd{,} \hlstr{'2012-07-31 6:30'}\hlstd{)}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{subset} \hlstd{= dates)}
+\hlkwd{head}\hlstd{(tmp)} \hlcom{# view first six rows}
+\end{alltt}
+\begin{verbatim}
+##         datetimestamp temp spcond sal do_pct do_mgl depth cdepth level clevel
+## 1 2012-07-01 12:00:00   NA     50  33    104      7     2     NA    NA     NA
+## 2 2012-07-01 12:15:00   NA     50  33    101      7     2     NA    NA     NA
+## 3 2012-07-01 12:30:00   NA     50  33    104      7     2     NA    NA     NA
+## 4 2012-07-01 12:45:00   NA     50  33    104      7     2     NA    NA     NA
+## 5 2012-07-01 13:00:00   NA     50  33    104      7     2     NA    NA     NA
+## 6 2012-07-01 13:15:00   NA     52  34    104      7     2     NA    NA     NA
+##   ph turb chlfluor
+## 1  8    3       NA
+## 2  8   11       NA
+## 3  8    8       NA
+## 4  8   10       NA
+## 5  8   15       NA
+## 6  8   12       NA
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Import the weather data at apaeb
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apaebmet'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\vspace{0.1in}
+\item \onslide<1->
+Deal with QAQC columns
+\onslide<3->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\vspace{0.1in}
+\item \onslide<1->
+Select two columns of interest
+\onslide<4->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'temp'}\hlstd{,} \hlstr{'wind'}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\vspace{0.1in}
+\item \onslide<1->
+Subset a date range
+\onslide<5->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{dates} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlstr{'2012-01-01 0:0'}\hlstd{,} \hlstr{'2012-01-31 0:0'}\hlstd{)}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{subset} \hlstd{= dates)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Bonus: What if we want to select all values before or after a date?  \\~\\
+See \texttt{?subset.swmpr}, requires the \texttt{operator} argument
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# get observations for 2013}
+\hlstd{dates} \hlkwb{<-} \hlstr{'2013-01-01 00:00'}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{subset} \hlstd{= dates,} \hlkwc{operator} \hlstd{=} \hlstr{'>='}\hlstd{)}
+\hlkwd{head}\hlstd{(tmp)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+A final nod to the \texttt{comb} function \\~\\
+Run the following, view the results, discuss with your neighbors:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat_met} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apaebmet'}\hlstd{)}
+\hlstd{dat_met} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_met)}
+\hlstd{dat_wq} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
+\hlstd{dat_wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_wq)}
+
+\hlcom{# what does this do?}
+\hlstd{tmp1} \hlkwb{<-} \hlkwd{comb}\hlstd{(dat_wq, dat_met,} \hlkwc{timestep} \hlstd{=} \hlnum{120}\hlstd{)}
+
+\hlcom{# what does this do?}
+\hlstd{tmp2} \hlkwb{<-} \hlkwd{setstep}\hlstd{(dat_wq,} \hlkwc{timestep} \hlstd{=} \hlnum{60}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+A final nod to the \texttt{comb} and \texttt{setstep} functions \\~\\
+Run the following, view the results, discuss with your neighbors:
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat_met} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apaebmet'}\hlstd{)}
+\hlstd{dat_met} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_met)}
+\hlstd{dat_wq} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
+\hlstd{dat_wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_wq)}
+
+\hlcom{# what does this do?}
+\hlstd{tmp1} \hlkwb{<-} \hlkwd{comb}\hlstd{(dat_wq, dat_met,} \hlkwc{timestep} \hlstd{=} \hlnum{120}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Now try this...
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{tmp2} \hlkwb{<-} \hlkwd{setstep}\hlstd{(dat_wq,} \hlkwc{timestep} \hlstd{=} \hlnum{60}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Summary}
+Now you have an idea of how to organize SWMP data for analysis!\\~\\
+Here's what we did: \\~\\
+\begin{itemize}
+\item \Bigtxt{Import} SWMP data into R
+\item Evaluate and \Bigtxt{handle QAQC} flags in the data 
+\item \Bigtxt{Subset} to select variables or time ranges of interest 
+\item \Bigtxt{Combine} data for comparison or data simplification \\~\\
+\end{itemize}
+Consult the SWMP cookboook for an example workflow\\~\\
+Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
+After break... what are some ways we can visualize or analyze the data?
+\end{frame}
 
 %%%%%%
 \begin{frame}
