@@ -1,0 +1,429 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{Boadilla}
+\usecolortheme[named=CornflowerBlue]{structure}
+\usepackage{graphicx}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{lmodern}
+\usetikzlibrary{shadows,arrows,positioning}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=links,urlcolor=links}
+\usepackage{pgfpages}
+
+\tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+\newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
+
+\newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
+
+\begin{document}
+
+\title[SWMPr analyze]{SWMPr analyze}
+
+\author[M. Beck, T. O'Brien]{Marcus W. Beck\inst{1} \and Todd D. O'Brien\inst{2}}
+
+\date{}
+
+\institute[]{\inst{1} ORISE, USEPA NHEERL Gulf Ecology Division\\ Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov} \and \inst{2} NOAA/NMFS COPEPOD Project\\ Email: \href{todd.obrien@noaa.gov}{todd.obrien@noaa.gov}}
+
+% knitr setup
+<<setup, include = F, cache = F>>=
+library(knitr)
+
+# set global chunk options
+opts_chunk$set(fig.align='center', fig.show='hold',message=F,dev='pdf',dev.args=list(family='serif'),fig.pos='!ht',warning=F,size = 'scriptsize', cache = T)
+options(replace.assign=TRUE,width=80,digits=1)
+
+knit_hooks$set(small.mar = function(before, options, envir) {
+    if (before) par(mar = c(4, 4, .1, .1))  # smaller margin on top and right
+})
+@
+
+% load SWMPr from local
+<<swmpr, eval = T, echo = F, cache = F, message = F>>=
+devtools::load_all('M:/docs/SWMPr')
+@
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
+\end{tikzpicture}}
+\titlepage
+\end{frame}
+
+%%%%%%
+\begin{frame}{Objectives for the session}
+\begin{itemize}
+\item What are some basic analyses that can be accomplished with SWMPr?\\~\\
+\item What are some plotting functions provided by SWMPr? \\~\\
+\item What are some resources for aditional learning?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Interactive portion}
+\onslide<+->
+We will use the swmpr2.Rproj project for this session, double-click to open in RStudio \\~\\
+\begin{itemize}
+\item location on flash drive\\~\\
+\item location online \\~\\
+\end{itemize}
+\onslide<+->
+You will run examples whenever you see this guy: \\~\\
+\centerline{\includegraphics[width = 0.15\textwidth]{imgs/swmprat.png}} 
+Don't forget to use your stickies: {\color{green} green} for done/ok, {\color{red} red} for problem
+\end{frame}
+
+%%%%%%
+\begin{frame}[t]{Basic analyses with SWMPr}
+\onslide<+->
+How do we want to use the data? \\~\\
+\onslide<+->
+\begin{itemize}
+\item What has happened at my site over time? \\~\\
+\item Are there differences between sites? \\~\\
+\item Can we remove seasonal trends? \\~\\
+\item Are there differences between parameters? \\~\\
+\item Others?
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Take a few minutes to acquaint yourself with the \Bigtxt{analyze} functions:
+<<eval = F>>=
+help.search('analyze', package = 'SWMPr')
+@
+\onslide<+->
+Which functions simplify the data?  \\~\\
+Which functions could you use to explore or visualize the data? \\~\\
+Which functions are related to metabolism? 
+\end{frame}
+
+%%%%%%
+\begin{frame}{Basic analyses with SWMPr - missing data}
+Most datasets will have missing values - how do you deal with those? \\~\\
+Remove? Set as mean? Replace with similar? \\~\\
+SWMPr provides a function to interpolate missing data: \texttt{na.approx} \\~\\
+To start, let's import and plot some data...
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - missing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Import the 2012 water quality data for cbmmc from the `zip\_ex' folder
+\onslide<2->
+<<eval = F>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmmcwq2012')
+@
+\vspace{0.1in}
+\item \onslide<1->
+Deal with QAQC columns
+\onslide<3->
+<<eval = F>>=
+tmp <- qaqc(dat)
+@
+\vspace{0.1in}
+\item \onslide<1->
+Select two columns of interest
+\onslide<4->
+<<eval = F>>=
+tmp <- subset(tmp, select = 'do_mgl', subset = c('2012-10-01 0:0', 
+  '2012-10-31 0:0'))
+@
+\vspace{0.1in}
+\item \onslide<1->
+Plot the data subset (\texttt{?plot.swmpr})
+\onslide<5->
+<<eval = F>>=
+plot(tmp)
+@
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - missing data}
+<<eval = T, echo = F, fig.height = 2.75, fig.width = 8, out.width = '0.9\\textwidth'>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmmcwq2012')
+tmp <- qaqc(dat)
+tmp <- subset(tmp, select = 'do_mgl', subset = c('2012-10-01 0:0', 
+  '2012-10-31 0:0'))
+plot(tmp)
+@
+Notice the missing data around October 12\textsuperscript{th} \\~\\
+The \texttt{na.approx} function (\texttt{na.approx.swmpr}) has three arguments:
+\begin{itemize}
+\item \texttt{object}: swmpr data object to fill
+\item \texttt{params}: name(s) of parameter to fill
+\item \texttt{maxgap}: maximum gap size to interpolate
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - missing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Use \texttt{na.approx} to interpolate the missing data (\texttt{na.approx.swmpr})
+\onslide<2->
+<<eval = T>>=
+tmp2 <- na.approx(tmp, params = 'do_mgl', maxgap = 100)
+@
+\vspace{0.1in}
+\item \onslide<1->
+Plot the two to see the differences
+\onslide<3->
+<<eval = F>>=
+plot(tmp)
+plot(tmp2)
+@
+\end{itemize}
+\onslide<3->
+\vspace{-0.4in}
+<<eval = T, echo = F, fig.height = 2.75, fig.width = 8, out.width = '0.9\\textwidth'>>=
+plot(tmp)
+@
+\vspace{-0.5in}
+<<eval = T, echo = F, fig.height = 2.75, fig.width = 8, out.width = '0.9\\textwidth'>>=
+plot(tmp2)
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - smoothing data}
+Now we know how to fill missing data, let's see how it can help...\\~\\
+Trend evaluation often considers variation at different spatial scales \\~\\
+As an example, we want to evaluate variation in dissolved oxygen at seasonal or annual scales \\~\\
+<<echo = F, fig.height = 3, fig.width = 8, out.width = '\\textwidth'>>=
+path <- 'zip_ex'
+dat <- import_local(path, 'cbmipwq')
+dat <- subset(dat, select = 'do_mgl')
+dat <- qaqc(dat)
+new_dat <- na.approx(dat, param = 'do_mgl', maxgap = 3000)
+do_smooth <- smoother(new_dat, params = 'do_mgl', window = 5000)
+plot(new_dat)
+lines(do_smooth, col = 'red')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[containsverbatim]{Analysis 2 - Smoothing and aggregation}
+The \texttt{smoother} function (\texttt{?smoother}) calculates a moving window average of a time series \\~\\
+\begin{itemize}
+\item \texttt{x}: Input data object \\~\\
+\item \texttt{window}: the size of the smoothing window, defaults to five observations at the current time step \\~\\
+\item \texttt{sides}: what defines the window, centered on an observation (2, default) or use only the preceding observations (1)  \\~\\
+\item \texttt{params}: which parameters to smooth, default all
+\end{itemize}
+What would be a good window to look at seasonal or annual variation?
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - smoothing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Import all years of water quality data for cbmip from the `zip\_ex' folder
+\onslide<2->
+<<eval = F>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+@
+\vspace{0.1in}
+\item \onslide<1->
+Deal with QAQC columns and subset DO
+\onslide<3->
+<<eval = F>>=
+tmp <- qaqc(dat)
+tmp <- subset(dat, select = 'do_mgl')
+@
+\vspace{0.1in}
+\item \onslide<1->
+Use \texttt{smoother} to remove daily and short-term variation, which window to use?
+\onslide<4->
+<<eval = F>>=
+do_smooth <- smoother(tmp2, window = 5000)
+@
+\vspace{0.1in}
+\item \onslide<1->
+Plot results (see \texttt{?plot.swmpr} and \texttt{?lines.swmpr})
+\onslide<5->
+<<eval = F>>=
+plot(tmp)
+lines(do_smooth)
+@
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - smoothing data}
+<<echo = F, fig.height = 2.5, fig.width = 8, out.width = '0.9\\textwidth', small.mar = T>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+tmp <- qaqc(dat)
+tmp <- subset(tmp, select = 'do_mgl')
+do_smooth <- smoother(tmp, window = 5000)
+plot(tmp)
+lines(do_smooth, col = 'red')
+@
+What happened?  \\~\\
+How can we fix the problem? 
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile,t]{Basic analyses with SWMPr - smoothing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Repeat the analysis but use \texttt{na.approx} to fill missing data
+<<echo = T, eval = T, fig.height = 2.5, fig.width = 8, out.width = '0.9\\textwidth', small.mar = T>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+tmp <- qaqc(dat)
+tmp <- subset(tmp, select = 'do_mgl')
+tmp <- na.approx(tmp, maxgap = 5000)
+do_smooth <- smoother(tmp, window = 5000)
+plot(tmp)
+lines(do_smooth, col = 'red')
+@
+\onslide<+->
+Bonus: Try changing \texttt{maxgap} or \texttt{window}
+\end{frame}
+
+%%%%%%
+\begin{frame}[containsverbatim]{Basic analyses with SWMPr - aggregating data}
+Finally, we can use \texttt{aggreswmp} to summarize and plot for an alternative interpretation \\~\\
+\texttt{aggreswmp} has five main arguments: \\~\\
+\begin{itemize}
+\item \texttt{swmpr\_in}: input data object \\~\\
+\item \texttt{by}: aggregation period (`years', `quarters', etc.) \\~\\
+\item \texttt{FUN}: aggregation function, defaults to mean \\~\\
+\item \texttt{params}: which parameters to aggregate, defaults all \\~\\
+\item \texttt{aggs\_out}: get the raw data, use this to make plots
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile,t]{Basic analyses with SWMPr - aggregating data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{itemize}
+\item \onslide<1->
+Import all years of water quality data for cbmip from the `zip\_ex' folder, QAQC cleanup, and subset DO
+\onslide<2->
+<<eval = T>>=
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+tmp <- qaqc(dat)
+tmp <- subset(dat, select = 'do_mgl')
+@
+\vspace{0.1in}
+\item \onslide<1->
+Use \texttt{aggreswmp} (\texttt{?aggreswmp}) to get quarterly summaries of the data
+\onslide<3->
+<<eval = F>>=
+aggtmp <- aggreswmp(tmp, by = 'quarters')
+@
+\vspace{0.1in}
+\item \onslide<4->
+Bonus: Try different aggregation periods
+\onslide<5->
+<<eval = F>>=
+aggtmp <- aggreswmp(tmp, by = 'years')
+aggtmp <- aggreswmp(tmp, by = 'weeks')
+@
+\item
+\onslide<4->
+Bonus: Try different aggregation functions
+\onslide<6->
+<<eval = F>>=
+fun_in <- function(x)  var(x, na.rm = TRUE)
+aggreswmp(swmpr_in, FUN = fun_in, 'years')
+@
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Basic analyses with SWMPr - aggregating data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+Plot the aggregated data by quarters - use \texttt{aggs\_out = TRUE}
+\onslide<+->
+<<>>=
+# use aggs_out to get all
+aggtmp <- aggreswmp(tmp, by = 'quarters', aggs_out = TRUE)
+@
+\onslide<+->
+Then use \texttt{boxplot} (\texttt{?boxplot}) from the R stats package
+\onslide<+->
+<<fig.height = 2.7, fig.width = 8, out.width = '0.9\\textwidth', small.mar = T>>=
+# use boxplot 
+boxplot(do_mgl ~ datetimestamp, data = aggtmp, ylab = 'do_mgl', ylim = c(0, 15))
+@
+\onslide<+->
+\vspace{-0.2in}
+Have a look at the data from \texttt{aggs_out = TRUE} and \texttt{aggs_out = FALSE}, how do they differ and why?
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Plotting functions in SWMPr}
+R provides near limitless options to visualize data - a full coverage of these tools would take days \\~\\
+We will briefly go over some key plotting functions in SWMPr, each is designed for simplicity and efficiency to summarize lots of data \\~\\
+Plotting functions in SWMPr: \\~\\
+\begin{itemize}
+\item \texttt{decomp}: time series decomposition
+\item \texttt{decomp\_cj}: time series decomposition, alternative
+\item \texttt{map\_reserve}: plot a basic map of a reserve
+\item \texttt{overplot}: plot multiple paramters on the same plot
+\item \texttt{plot\_metab}: plot metabolism estimates
+\item \texttt{plot\_summary}: plot multiple summaries for a parameter
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+The \texttt{map\_reserve} function can be used to map sites:
+\begin{itemize}
+\item \texttt{nerr\_site\_id}: site(s) to map, usually first three letters
+\item \texttt{zoom}: zoom factor for the map (usually between 5--15)
+\item \texttt{map\_type}: \texttt{`terrain'}, \texttt{`satellite'}, \texttt{`roadmap'}, or \texttt{`hybrid'}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+<<eval = F>>=
+# try any of these examples
+map_reserve('jac')
+
+map_reserve('elk', zoom = 13, 
+  map_type = 'hybrid')
+
+map_reserve('gtmss', zoom = 15, 
+  map_type = 'satellite',
+  text_col = 'lightblue')
+@
+\end{column}
+\begin{column}{0.45\textwidth}
+<<echo = F, fig.height = 4, fig.width = 4, out.width = '\\textwidth'>>=
+map_reserve('jac')
+@
+\end{column}
+\end{columns}
+\end{frame}
+
+
+%%%%%%
+\begin{frame}
+\vspace{0.3in}
+\centerline{
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
+\end{tikzpicture}}
+\vspace{0.5in}
+\Large
+\centerline{\Bigtxt{Questions??}}
+\end{frame}
+
+\end{document}

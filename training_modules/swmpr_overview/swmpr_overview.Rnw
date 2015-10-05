@@ -98,20 +98,6 @@ The raw data will look like this...\\~\\
 \centerline{\includegraphics[width = 0.9\textwidth]{imgs/qaqc_ex.png}}
 \end{frame}
 
-% %%%%%%
-% \begin{frame}[t]{Why and what is SWMPr?}
-% \onslide<+->
-% How do we want to use the data? \\~\\
-% \onslide<+->
-% \begin{itemize}
-% \item What has happened at my site over time? \\~\\
-% \item Are there differences between sites? \\~\\
-% \item Can we remove seasonal trends? \\~\\
-% \item Are there differences between parametes? \\~\\
-% \item Others?
-% \end{itemize}
-% \end{frame}
-
 %%%%%%
 \begin{frame}[t]{Why and what is SWMPr?}
 \onslide<+->
@@ -292,7 +278,7 @@ What are the challenges for evaluating SWMP data? \\~\\
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
-Take a few minutes to acquint yourself with the \Bigtxt{organization} functions:
+Take a few minutes to acquaint yourself with the \Bigtxt{organize} functions:
 <<eval = F>>=
 help.search('organize', package = 'SWMPr')
 @
@@ -465,26 +451,6 @@ head(tmp)
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
-A final nod to the \texttt{comb} function \\~\\
-Run the following, view the results, discuss with your neighbors:
-<<eval = F>>=
-mypath <- 'zip_ex'
-dat_met <- import_local(mypath, 'apaebmet')
-dat_met <- qaqc(dat_met)
-dat_wq <- import_local(mypath, 'apadbwq')
-dat_wq <- qaqc(dat_wq)
-
-# what does this do?
-tmp1 <- comb(dat_wq, dat_met, timestep = 120)
-
-# what does this do?
-tmp2 <- setstep(dat_wq, timestep = 60)
-@
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
-\onslide<+->
 A final nod to the \texttt{comb} and \texttt{setstep} functions \\~\\
 Run the following, view the results, discuss with your neighbors:
 <<eval = F>>=
@@ -497,6 +463,7 @@ dat_wq <- qaqc(dat_wq)
 # what does this do?
 tmp1 <- comb(dat_wq, dat_met, timestep = 120)
 @
+\onslide<+->
 Now try this...
 <<eval = F>>=
 tmp2 <- setstep(dat_wq, timestep = 60)

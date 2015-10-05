@@ -139,20 +139,6 @@ The raw data will look like this...\\~\\
 \centerline{\includegraphics[width = 0.9\textwidth]{imgs/qaqc_ex.png}}
 \end{frame}
 
-% %%%%%%
-% \begin{frame}[t]{Why and what is SWMPr?}
-% \onslide<+->
-% How do we want to use the data? \\~\\
-% \onslide<+->
-% \begin{itemize}
-% \item What has happened at my site over time? \\~\\
-% \item Are there differences between sites? \\~\\
-% \item Can we remove seasonal trends? \\~\\
-% \item Are there differences between parametes? \\~\\
-% \item Others?
-% \end{itemize}
-% \end{frame}
-
 %%%%%%
 \begin{frame}[t]{Why and what is SWMPr?}
 \onslide<+->
@@ -395,7 +381,7 @@ What are the challenges for evaluating SWMP data? \\~\\
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
-Take a few minutes to acquint yourself with the \Bigtxt{organization} functions:
+Take a few minutes to acquaint yourself with the \Bigtxt{organize} functions:
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -653,30 +639,6 @@ See \texttt{?subset.swmpr}, requires the \texttt{operator} argument
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
-A final nod to the \texttt{comb} function \\~\\
-Run the following, view the results, discuss with your neighbors:
-\begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
-\hlstd{dat_met} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apaebmet'}\hlstd{)}
-\hlstd{dat_met} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_met)}
-\hlstd{dat_wq} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
-\hlstd{dat_wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_wq)}
-
-\hlcom{# what does this do?}
-\hlstd{tmp1} \hlkwb{<-} \hlkwd{comb}\hlstd{(dat_wq, dat_met,} \hlkwc{timestep} \hlstd{=} \hlnum{120}\hlstd{)}
-
-\hlcom{# what does this do?}
-\hlstd{tmp2} \hlkwb{<-} \hlkwd{setstep}\hlstd{(dat_wq,} \hlkwc{timestep} \hlstd{=} \hlnum{60}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
-\onslide<+->
 A final nod to the \texttt{comb} and \texttt{setstep} functions \\~\\
 Run the following, view the results, discuss with your neighbors:
 \begin{knitrout}\scriptsize
@@ -693,6 +655,7 @@ Run the following, view the results, discuss with your neighbors:
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\onslide<+->
 Now try this...
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
