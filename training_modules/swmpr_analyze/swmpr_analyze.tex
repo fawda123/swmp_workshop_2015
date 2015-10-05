@@ -457,6 +457,7 @@ Bonus: Try different aggregation periods
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\vspace{0.1in}
 \item
 \onslide<4->
 Bonus: Try different aggregation functions
@@ -465,10 +466,11 @@ Bonus: Try different aggregation functions
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{fun_in} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}  \hlkwd{var}\hlstd{(x,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlkwd{aggreswmp}\hlstd{(swmpr_in,} \hlkwc{FUN} \hlstd{= fun_in,} \hlstr{'years'}\hlstd{)}
+\hlstd{aggtmp} \hlkwb{<-} \hlkwd{aggreswmp}\hlstd{(swmpr_in,} \hlkwc{FUN} \hlstd{= fun_in,} \hlstr{'years'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\vspace{0.1in}
 \end{itemize}
 \end{frame}
 
@@ -564,6 +566,124 @@ The \texttt{map\_reserve} function can be used to map sites:
 \end{columns}
 \end{frame}
 
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<1->
+The \texttt{overplot} function can be used to plot one to many time series:\\~\\
+\begin{itemize}
+\item \texttt{dat_in}: input \texttt{swmpr} object
+\item \texttt{select}: parameter(s) to plot (passed to \texttt{subset})
+\item \texttt{subset}: date ranges to plot (passed to \texttt{subset})\\~\\
+\end{itemize}
+\onslide<2->
+Import the 2011 data for cbmip
+\onslide<3->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# import}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'cbmipwq2011'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<2->
+Plot DO, temperature, and salinity for August (\texttt{?overplot})
+\onslide<4->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# plot}
+\hlkwd{overplot}\hlstd{(dat,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'do_mgl'}\hlstd{,} \hlstr{'temp'}\hlstd{),}
+  \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2011-08-01 0:0'}\hlstd{,} \hlstr{'2011-08-31 0:0'}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%% 
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# plot}
+\hlkwd{overplot}\hlstd{(dat,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'do_mgl'}\hlstd{,} \hlstr{'temp'}\hlstd{),}
+  \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2011-08-01 0:0'}\hlstd{,} \hlstr{'2011-08-31 0:0'}\hlstd{))}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-28-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<1->
+The \texttt{plot_summary} function can be used to summarize a parameter across the time series\\~\\
+\begin{itemize}
+\item \texttt{swmpr\_in}: input swmpr object
+\item \texttt{param}: parameter to summarize
+\item \texttt{years}: years to plot\\~\\
+\end{itemize}
+\onslide<1->
+Import all years of data for cbmip, plot a summary of temperature (\texttt{?plot\_summary})
+\onslide<2->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# import}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'cbmipwq'}\hlstd{)}
+
+\hlcom{# plot}
+\hlkwd{plot_summary}\hlstd{(dat,} \hlstr{'temp'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# plot}
+\hlkwd{plot_summary}\hlstd{(dat,} \hlstr{'temp'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+
+{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-31-1} 
+
+}
+
+
+
+\end{knitrout}
+\end{frame}
+
+%%%%%%
+\begin{frame}{Additional resources}
+You've been exposed to some basic tools to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data with SWMPr \\~\\
+There are multiple resources availabe for reference and continued learning: \\~\\
+\begin{itemize}
+\item \href{http://swmprats.net/}{swmprats.net}
+\begin{itemize}
+\item User forum to post questions, plot of the month
+\item Widgets for data viz
+\item Access to workshop materials
+\item Access to 2014 workshop materials \\~\\
+\end{itemize}
+\item SWMPr online reference \href{https://cran.r-project.org/web/packages/SWMPr/SWMPr.pdf}{manual}: list of all functions \\~\\
+\item SWMPr cookbook: step-by-step scripts as stand-alone analyses \\~\\
+\item Email instructors: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{todd.obrien@noaa.gov}{todd.obrien@noaa.gov}
+\end{itemize}
+\end{frame}
 
 %%%%%%
 \begin{frame}

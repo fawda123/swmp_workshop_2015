@@ -1,38 +1,17 @@
 \frametitle{Plotting functions in SWMPr \includegraphics [width = 0.065\textwidth ]{imgs/swmprat.png}}
-The \texttt{map\_reserve} function can be used to map sites:
-\begin{itemize}
-\item \texttt{nerr\_site\_id}: site(s) to map, usually first three letters
-\item \texttt{zoom}: zoom factor for the map (usually between 5--15)
-\item \texttt{map\_type}: \texttt{`terrain'}, \texttt{`satellite'}, \texttt{`roadmap'}, or \texttt{`hybrid'}
-\end{itemize}
-\begin{columns}[T]
-\begin{column}{0.45\textwidth}
+
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcom{# try any of these examples}
-\hlkwd{map_reserve}\hlstd{(}\hlstr{'jac'}\hlstd{)}
-
-\hlkwd{map_reserve}\hlstd{(}\hlstr{'elk'}\hlstd{,} \hlkwc{zoom} \hlstd{=} \hlnum{13}\hlstd{,}
-  \hlkwc{map_type} \hlstd{=} \hlstr{'hybrid'}\hlstd{)}
-
-\hlkwd{map_reserve}\hlstd{(}\hlstr{'gtmss'}\hlstd{,} \hlkwc{zoom} \hlstd{=} \hlnum{15}\hlstd{,}
-  \hlkwc{map_type} \hlstd{=} \hlstr{'satellite'}\hlstd{,}
-  \hlkwc{text_col} \hlstd{=} \hlstr{'lightblue'}\hlstd{)}
+\hlcom{# plot}
+\hlkwd{plot_summary}\hlstd{(dat,} \hlstr{'temp'}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\end{knitrout}
-\end{column}
-\begin{column}{0.45\textwidth}
-\begin{knitrout}\scriptsize
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
-{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-25-1}
+{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-31-1}
 
 }
 
 
 
 \end{knitrout}
-\end{column}
-\end{columns}

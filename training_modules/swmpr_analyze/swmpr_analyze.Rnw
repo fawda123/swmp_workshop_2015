@@ -336,14 +336,16 @@ Bonus: Try different aggregation periods
 aggtmp <- aggreswmp(tmp, by = 'years')
 aggtmp <- aggreswmp(tmp, by = 'weeks')
 @
+\vspace{0.1in}
 \item
 \onslide<4->
 Bonus: Try different aggregation functions
 \onslide<6->
 <<eval = F>>=
 fun_in <- function(x)  var(x, na.rm = TRUE)
-aggreswmp(swmpr_in, FUN = fun_in, 'years')
+aggtmp <- aggreswmp(swmpr_in, FUN = fun_in, 'years')
 @
+\vspace{0.1in}
 \end{itemize}
 \end{frame}
 
@@ -413,6 +415,94 @@ map_reserve('jac')
 \end{columns}
 \end{frame}
 
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<1->
+The \texttt{overplot} function can be used to plot one to many time series:\\~\\
+\begin{itemize}
+\item \texttt{dat_in}: input \texttt{swmpr} object
+\item \texttt{select}: parameter(s) to plot (passed to \texttt{subset})
+\item \texttt{subset}: date ranges to plot (passed to \texttt{subset})\\~\\
+\end{itemize}
+\onslide<2->
+Import the 2011 data for cbmip
+\onslide<3->
+<<eval = T>>=
+# import
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq2011')
+@
+\onslide<2->
+Plot DO, temperature, and salinity for August (\texttt{?overplot})
+\onslide<4->
+<<eval = F>>=
+# plot
+overplot(dat, select = c('do_mgl', 'temp'), 
+  subset = c('2011-08-01 0:0', '2011-08-31 0:0'))
+@
+\end{frame}
+
+%%%%%% 
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+<<eval = T, fig.height = 4, fig.width = 8, out.width = '\\textwidth', small.mar = T>>=
+# plot
+overplot(dat, select = c('do_mgl', 'temp'), 
+  subset = c('2011-08-01 0:0', '2011-08-31 0:0'))
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<1->
+The \texttt{plot_summary} function can be used to summarize a parameter across the time series\\~\\
+\begin{itemize}
+\item \texttt{swmpr\_in}: input swmpr object
+\item \texttt{param}: parameter to summarize
+\item \texttt{years}: years to plot\\~\\
+\end{itemize}
+\onslide<1->
+Import all years of data for cbmip, plot a summary of temperature (\texttt{?plot\_summary})
+\onslide<2->
+<<eval = F>>=
+# import
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+
+# plot
+plot_summary(dat, 'temp')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+<<eval = T, echo = F>>=
+# import
+mypath <- 'zip_ex'
+dat <- import_local(mypath, 'cbmipwq')
+@
+<<fig.height = 6.5, fig.width = 11, out.width = '0.9\\textwidth'>>=
+# plot
+plot_summary(dat, 'temp')
+@
+\end{frame}
+
+%%%%%%
+\begin{frame}{Additional resources}
+You've been exposed to some basic tools to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data with SWMPr \\~\\
+There are multiple resources availabe for reference and continued learning: \\~\\
+\begin{itemize}
+\item \href{http://swmprats.net/}{swmprats.net}
+\begin{itemize}
+\item User forum to post questions, plot of the month
+\item Widgets for data viz
+\item Access to workshop materials
+\item Access to 2014 workshop materials \\~\\
+\end{itemize}
+\item SWMPr online reference \href{https://cran.r-project.org/web/packages/SWMPr/SWMPr.pdf}{manual}: list of all functions \\~\\
+\item SWMPr cookbook: step-by-step scripts as stand-alone analyses \\~\\
+\item Email instructors: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{todd.obrien@noaa.gov}{todd.obrien@noaa.gov}
+\end{itemize}
+\end{frame}
 
 %%%%%%
 \begin{frame}
