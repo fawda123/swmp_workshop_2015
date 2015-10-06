@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  6 OCT 2015 14:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  6 OCT 2015 17:20
 entering extended mode
 **swmpr_analyze.tex
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.tex
@@ -117,6 +117,10 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+
+Class beamer Warning: ``serif'' is obsolete. Use font theme ``serif'' instead o
+n input line 348.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
@@ -506,13 +510,6 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\sansmathaccent\sansmathacc
-ent.sty
-Package: sansmathaccent 2013/03/28
-
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\filehook\filehook.sty
-Package: filehook 2011/10/12 v0.5d Hooks for input files
 )))
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\beamerbasetran
 slator.sty
@@ -778,10 +775,6 @@ Package: beamerouterthemeinfolines 2012/10/16  (rcs-revision 51a8c72084af)
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\themes\color\b
 eamercolorthemestructure.sty
 Package: beamercolorthemestructure 2010/06/17  (rcs-revision d02a7cf4d8ae)
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\themes\font\be
-amerfontthemeserif.sty
-Package: beamerfontthemeserif 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\mh\breqn.sty
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
@@ -1212,7 +1205,7 @@ File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 ibraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v2.10 (rcs-revision 1.7)
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 63.
+Package hyperref Info: Option `colorlinks' set `true' on input line 62.
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfpages.sty
 Package: pgfpages 2004/11/05 ver 0.01
@@ -1311,28 +1304,28 @@ Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 75.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 76.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 75.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1386,7 +1379,7 @@ File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \everyMPtoPDFconversion=\toks48
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box79
-Package hyperref Info: Link coloring ON on input line 76.
+Package hyperref Info: Link coloring ON on input line 75.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1396,9 +1389,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count296
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
 
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.out)
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.out)
@@ -1406,41 +1399,41 @@ LaTeX Info: Redefining \nameref on input line 76.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/lmr/m/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 76.
+(Font)                  OT1/lmr/m/n --> OT1/lmr/m/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 76.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 76.
+(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/m/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/m/it on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> OT1/lmr/m/it on input line 76.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 76.
+(Font)                  OT1/lmr/bx/it --> OT1/lmr/m/it on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 75.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/lmr/m/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/m/n --> OT1/lmr/bx/n on input line 75.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 76.
+(Font)                  OT1/lmr/bx/n --> OT1/lmr/bx/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 76.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 76.
+(Font)                  OT1/lmr/m/it --> OT1/lmr/bx/it on input line 75.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 76.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 75.
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\beamer\base\translator\dic
 ts\translator-basic-dictionary\translator-basic-dictionary-English.dict
@@ -1468,73 +1461,54 @@ Dictionary: translator-numbers-dictionary, Language: English
 ts\translator-theorem-dictionary\translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 76.
+LaTeX Info: Redefining \includegraphics on input line 75.
 
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.nav)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 80.
+(hyperref)                setting the option has no effect on input line 79.
 
 <imgs/workshop_logo.png, id=29, 748.2354pt x 154.6578pt>
 File: imgs/workshop_logo.png Graphic file (type png)
 
 <use imgs/workshop_logo.png>
-Package pdftex.def Info: imgs/workshop_logo.png used on input line 100.
+Package pdftex.def Info: imgs/workshop_logo.png used on input line 99.
 (pdftex.def)             Requested size: 308.06367pt x 63.67676pt.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 100
-.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmss.fd"
-File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OT1+stillsansseriflarge on
- input line 100.
-LaTeX Font Info:    No file OT1stillsansseriflarge.fd. on input line 100.
-
-
-LaTeX Font Warning: Font shape `OT1/stillsansseriflarge/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 100.
-
-
-LaTeX Font Warning: Font shape `OT1/stillsansseriflarge/bx/n' undefined
-(Font)              using `OT1/stillsansseriflarge/m/n' instead on input line 1
-00.
-
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 100.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 99.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 100
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 99.
+
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 100
-.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 99.
+
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 100.
+(Font)              <10.95> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 100.
+(Font)              <8> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 100.
-LaTeX Font Info:    Try loading font information for U+msa on input line 100.
+(Font)              <6> on input line 99.
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 100.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 100.
+(Font)              <5> on input line 99.
  [1
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <M:/docs/swm
@@ -1544,7 +1518,7 @@ p_workshop_2015/training_modules/swmpr_analyze/imgs/workshop_logo.png>] [2
 <imgs/swmprat.png, id=95, 255.95625pt x 204.01219pt>
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 123.
+Package pdftex.def Info: imgs/swmprat.png used on input line 122.
 (pdftex.def)             Requested size: 51.3422pt x 40.92311pt.
 
 [3
@@ -1552,7 +1526,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 123.
  <M:/docs/swmp_workshop_2015/training_modules/swmpr_analyze/imgs/swmprat.png>]
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 123.
+Package pdftex.def Info: imgs/swmprat.png used on input line 122.
 (pdftex.def)             Requested size: 51.3422pt x 40.92311pt.
  [4
 
@@ -1577,7 +1551,7 @@ File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 154.
+Package pdftex.def Info: imgs/swmprat.png used on input line 153.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [7
 
@@ -1586,7 +1560,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 154.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 154.
+Package pdftex.def Info: imgs/swmprat.png used on input line 153.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [8
 
@@ -1597,7 +1571,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 154.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 213.
+Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [10
 
@@ -1606,7 +1580,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 213.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 213.
+Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [11
 
@@ -1615,7 +1589,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 213.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 213.
+Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [12
 
@@ -1624,7 +1598,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 213.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 213.
+Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [13
 
@@ -1633,7 +1607,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 213.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 213.
+Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [14
 
@@ -1666,7 +1640,7 @@ Package pdftex.def Info: figure/unnamed-chunk-10-1.pdf used on input line 42.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 285.
+Package pdftex.def Info: imgs/swmprat.png used on input line 284.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [16
 
@@ -1687,7 +1661,7 @@ Package pdftex.def Info: figure/unnamed-chunk-10-1.pdf used on input line 42.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 285.
+Package pdftex.def Info: imgs/swmprat.png used on input line 284.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [17
 
@@ -1706,7 +1680,7 @@ Package pdftex.def Info: figure/unnamed-chunk-10-1.pdf used on input line 42.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 285.
+Package pdftex.def Info: imgs/swmprat.png used on input line 284.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [18
 
@@ -1728,7 +1702,7 @@ k-11-1.pdf>] [20
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 366.
+Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [21
 
@@ -1737,7 +1711,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 366.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 366.
+Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [22
 
@@ -1746,7 +1720,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 366.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 366.
+Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [23
 
@@ -1755,7 +1729,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 366.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 366.
+Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [24
 
@@ -1764,7 +1738,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 366.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 366.
+Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [25
 
@@ -1784,7 +1758,7 @@ k-16-1.pdf>]
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 419.
+Package pdftex.def Info: imgs/swmprat.png used on input line 418.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [27
 
@@ -1793,7 +1767,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 419.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 419.
+Package pdftex.def Info: imgs/swmprat.png used on input line 418.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [28
 
@@ -1802,7 +1776,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 419.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 419.
+Package pdftex.def Info: imgs/swmprat.png used on input line 418.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [29
 
@@ -1813,54 +1787,78 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 419.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [31
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[31
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [32
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[32
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [33
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[33
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [34
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[34
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [35
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[35
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 488.
+Package pdftex.def Info: imgs/swmprat.png used on input line 487.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
- [36
+
+Overfull \vbox (1.31522pt too high) detected at line 487
+ []
+
+[36
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
@@ -1873,7 +1871,7 @@ Package pdftex.def Info: figure/unnamed-chunk-24-1.pdf used on input line 24.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 524.
+Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [37
 
@@ -1888,7 +1886,7 @@ Package pdftex.def Info: figure/unnamed-chunk-24-1.pdf used on input line 24.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 524.
+Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [38
 
@@ -1902,7 +1900,7 @@ Package pdftex.def Info: figure/unnamed-chunk-24-1.pdf used on input line 24.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 524.
+Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [39
 
@@ -1916,7 +1914,7 @@ Package pdftex.def Info: figure/unnamed-chunk-24-1.pdf used on input line 24.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 524.
+Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [40
 
@@ -1930,7 +1928,7 @@ Package pdftex.def Info: figure/unnamed-chunk-24-1.pdf used on input line 24.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 524.
+Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [41
 
@@ -1949,7 +1947,7 @@ Package pdftex.def Info: figure/unnamed-chunk-26-1.pdf used on input line 32.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 582.
+Package pdftex.def Info: imgs/swmprat.png used on input line 581.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [43
 
@@ -1964,7 +1962,7 @@ Package pdftex.def Info: figure/unnamed-chunk-26-1.pdf used on input line 32.
 )
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 582.
+Package pdftex.def Info: imgs/swmprat.png used on input line 581.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [44
 
@@ -1973,7 +1971,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 582.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 617.
+Package pdftex.def Info: imgs/swmprat.png used on input line 616.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [45
 
@@ -1982,7 +1980,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 617.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 617.
+Package pdftex.def Info: imgs/swmprat.png used on input line 616.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [46
 
@@ -1991,7 +1989,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 617.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 617.
+Package pdftex.def Info: imgs/swmprat.png used on input line 616.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [47
 
@@ -2000,7 +1998,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 617.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 617.
+Package pdftex.def Info: imgs/swmprat.png used on input line 616.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [48
 
@@ -2020,7 +2018,7 @@ k-29-1.pdf>]
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 663.
+Package pdftex.def Info: imgs/swmprat.png used on input line 662.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [50
 
@@ -2029,7 +2027,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 663.
 File: imgs/swmprat.png Graphic file (type png)
 
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 663.
+Package pdftex.def Info: imgs/swmprat.png used on input line 662.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [51
 
@@ -2050,7 +2048,7 @@ k-32-1.pdf>] [53
 File: imgs/workshop_logo.png Graphic file (type png)
 
 <use imgs/workshop_logo.png>
-Package pdftex.def Info: imgs/workshop_logo.png used on input line 713.
+Package pdftex.def Info: imgs/workshop_logo.png used on input line 712.
 (pdftex.def)             Requested size: 308.06367pt x 63.67676pt.
  [54
 
@@ -2058,40 +2056,36 @@ Package pdftex.def Info: imgs/workshop_logo.png used on input line 713.
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 715.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 715.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 714.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 714.
 
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 715.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 715.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 714.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 714.
 Package rerunfilecheck Info: File `swmpr_analyze.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 715.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 714.
  ) 
 Here is how much of TeX's memory you used:
- 25286 strings out of 493921
- 488682 string characters out of 3147282
- 550839 words of memory out of 3000000
- 27754 multiletter control sequences out of 15000+200000
- 73285 words of font info for 58 fonts, out of 3000000 for 9000
+ 25122 strings out of 493921
+ 484788 string characters out of 3147282
+ 548589 words of memory out of 3000000
+ 27611 multiletter control sequences out of 15000+200000
+ 61790 words of font info for 52 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 56i,16n,69p,487b,713s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,16n,69p,493b,713s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rmtt.enc}{C:/Program Files
 /MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX 2.9/fonts/en
-c/dvips/lm/lm-rm.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/symbols/msam7.pfb>
-Output written on swmpr_analyze.pdf (54 pages, 2855704 bytes).
+c/dvips/lm/lm-rm.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/l
+m/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+symbols/msam7.pfb>
+Output written on swmpr_analyze.pdf (54 pages, 2867689 bytes).
 PDF statistics:
  1590 PDF objects out of 1728 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)

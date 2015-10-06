@@ -1,4 +1,4 @@
-\documentclass[xcolor=dvipsnames]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[xcolor=dvipsnames,serif]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -50,7 +50,6 @@
 \usepackage{alltt}
 \usetheme{Boadilla}
 \usecolortheme[named=CornflowerBlue]{structure}
-\usefonttheme[stillsansseriflarge]{serif}
 \usepackage{graphicx}
 \usepackage{breqn}
 \usepackage{xcolor}
@@ -66,10 +65,8 @@
 \tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
 
 % change font of frame titles and title slide
-\setbeamerfont{title}{family=\fontfamily{stillsansseriflarge}\selectfont\bfseries}
-\setbeamerfont{frametitle}{family=\fontfamily{stillsansseriflarge}\selectfont} 
-
-
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries} 
 
 \newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 
