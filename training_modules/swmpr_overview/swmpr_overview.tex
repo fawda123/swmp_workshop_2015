@@ -50,6 +50,7 @@
 \usepackage{alltt}
 \usetheme{Boadilla}
 \usecolortheme[named=CornflowerBlue]{structure}
+\usefonttheme[stillsansseriflarge]{serif}
 \usepackage{graphicx}
 \usepackage{breqn}
 \usepackage{xcolor}
@@ -64,13 +65,19 @@
 
 \tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
 
+% change font of frame titles and title slide
+\setbeamerfont{title}{family=\fontfamily{stillsansseriflarge}\selectfont\bfseries}
+\setbeamerfont{frametitle}{family=\fontfamily{stillsansseriflarge}\selectfont} 
+
+
+
 \newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 
 \newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
-\title[SWMPr overview, retrieve, and organize]{SWMPr overview, retrieve, and organize}
+\title[SWMPr overview]{SWMPr overview, retrieve, and organize}
 
 \author[M. Beck, T. O'Brien]{Marcus W. Beck\inst{1} \and Todd D. O'Brien\inst{2}}
 
@@ -120,7 +127,7 @@ Don't forget to use your stickies: {\color{green} green} for done/ok, {\color{re
 
 %%%%%%
 \begin{frame}{Why and what is SWMPr?}
-SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 300 stations in 28 US estuaries \\~\\
+SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 140 stations in 28 US estuaries \\~\\
 \centerline{\includegraphics[width = 0.8\textwidth]{imgs/NERRS_locations.png}}
 \tiny
 \flushright
@@ -129,7 +136,7 @@ SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous m
 
 %%%%%%
 \begin{frame}[t]{Why and what is SWMPr?}
-CDMO (\href{http://cdmo.baruch.sc.edu/}{link}) is your one-stop shop for retrieving SWMP data \\~\\
+\href{http://cdmo.baruch.sc.edu/}{CDMO} is your one-stop shop for retrieving SWMP data \\~\\
 \centerline{\includegraphics[width = \textwidth]{imgs/cdmo_front.png}}
 \end{frame}
 
@@ -207,7 +214,7 @@ What about this?
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-Any useful information?
+What pieces of information are in the help file?
 \end{frame}
 
 %%%%%%
@@ -248,7 +255,8 @@ Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/a
 \begin{frame}[fragile]{Getting SWMP data into R \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
-Let's import some data from that folder...
+Let's import some data from that folder, try to import \texttt{`apacpwq'}...
+\onslide<+->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -268,7 +276,7 @@ What about this?
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{dat2} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apacp2012'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
-\hlstd{dat3} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbnut'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
+\hlstd{dat3} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbnut'}\hlstd{,} \hlkwc{trace} \hlstd{= F)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -351,19 +359,6 @@ Now we can think about preprocessing or organizing prior to analysis
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr}
-Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
-\begin{itemize}
-\item Download a dataset from zip downloads \\~\\
-\item Find where the data have downloaded \\~\\
-\item Import using \texttt{import_local} \\~\\
-\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
-\item Lost? Check the help files: \texttt{?import\_local}\\~\\
-\end{itemize}
-Now we can think about preprocessing or organizing prior to analysis
-\end{frame}
-
-%%%%%%
 \begin{frame}[t]{Data organization with SWMPr}
 \onslide<+->
 What are the challenges for evaluating SWMP data? \\~\\
@@ -430,7 +425,6 @@ Try running \texttt{qaqc} (\texttt{?qaqc}) and view again, what happened?
 \onslide<+->
 Try playing with the \texttt{qaqc\_keep} argument (\texttt{?qaqc})... \\~\\
 How are these different?
-\onslide<+->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -442,6 +436,7 @@ How are these different?
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\onslide<+->
 Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -459,7 +454,7 @@ Changes are hard to visualize for lots of data - as a proof of concept, try runn
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}} 
 \onslide<+->
-We'll continue with the water quality data for apawq - import again and run the \texttt{qaqc} function
+We'll continue with the water quality data for apadb - import again and run the \texttt{qaqc} function
 \onslide<+->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -474,6 +469,7 @@ We'll continue with the water quality data for apawq - import again and run the 
 \onslide<+->
 What is the next logical step after dealing with QAQC values? \\~\\
 How would we further want to organize the data? \\~\\
+\onslide<+->
 Maybe we want to subset the data... 
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -615,25 +611,19 @@ Subset a date range
 \end{alltt}
 \end{kframe}
 \end{knitrout}
-\end{itemize}
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
-\onslide<+->
-Bonus: What if we want to select all values before or after a date?  \\~\\
-See \texttt{?subset.swmpr}, requires the \texttt{operator} argument
-\onslide<+->
+\item \onslide<6->
+Bonus: can you select all observations before or after a date?
+\onslide<7->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlcom{# get observations for 2013}
+\hlcom{# get observations after Jan 1, 2013}
 \hlstd{dates} \hlkwb{<-} \hlstr{'2013-01-01 00:00'}
 \hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{subset} \hlstd{= dates,} \hlkwc{operator} \hlstd{=} \hlstr{'>='}\hlstd{)}
-\hlkwd{head}\hlstd{(tmp)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+\end{itemize}
 \end{frame}
 
 %%%%%%
@@ -650,7 +640,7 @@ Run the following, view the results, discuss with your neighbors:
 \hlstd{dat_wq} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
 \hlstd{dat_wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_wq)}
 
-\hlcom{# what does this do?}
+\hlcom{# what does this do (hint: use View to see the data)?}
 \hlstd{tmp1} \hlkwb{<-} \hlkwd{comb}\hlstd{(dat_wq, dat_met,} \hlkwc{timestep} \hlstd{=} \hlnum{120}\hlstd{)}
 \end{alltt}
 \end{kframe}
@@ -664,6 +654,44 @@ Now try this...
 \end{alltt}
 \end{kframe}
 \end{knitrout}
+What happened?
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Organize SWMP data}
+The \texttt{setstep} function is used to standardize the time step of a \texttt{swmpr} object \\~\\
+The \texttt{comb} function is used to combine \texttt{swmpr} objects \\~\\
+\texttt{setstep} is used within \texttt{comb} so you should not have to use it directly \\~\\
+Arguments for \texttt{comb}: \\~\\
+\begin{itemize}
+\item ... : input swmpr data, separated by comma
+\item timestep: minutes defining the standardized time step
+\item differ: maximum difference in minutes for matching observations with original time steps to standardized time steps
+\item method: how the data are combined using the time stamps - union, intersect, or using a station
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Organize SWMP data}
+\onslide<1->
+A final note about combining... what about combining data with different \Bigtxt{time ranges}?\\~\\
+Consider combining two datasets \\~\\
+\begin{itemize}
+\item \onslide<2-> \Bigtxt{Scenario 1}: Time ranges are the same
+\begin{itemize}
+\item \onslide<3-> all methods can be used, same results for each
+\end{itemize}
+\item \onslide<4-> \Bigtxt{Scenario 2}: Time ranges are not the same, but there is overlap
+\begin{itemize}
+\item \onslide<5-> all methods can be used, different results for each
+\end{itemize}
+\item \onslide<6-> \Bigtxt{Scenario 3}: Time ranges are not the same, there is no overlap
+\begin{itemize}
+\item \onslide<7-> only \texttt{`union'} will work \\~\\
+\end{itemize}
+\end{itemize}
+\onslide<1->
+The \texttt{method} argument of allows flexibility under different scenarios - time range \texttt{`intersect'}, \texttt{`union'}, or range of one station
 \end{frame}
 
 %%%%%%
@@ -676,9 +704,35 @@ Here's what we did: \\~\\
 \item \Bigtxt{Subset} to select variables or time ranges of interest 
 \item \Bigtxt{Combine} data for comparison or data simplification \\~\\
 \end{itemize}
-Consult the SWMP cookboook for an example workflow\\~\\
-Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
-After break... what are some ways we can visualize or analyze the data?
+Consult the SWMP cookbook for an example workflow\\~\\
+Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN})
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{A final exercise \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+\Bigtxt{Import} 2012 apadbwq and apaebmet data, deal with \Bigtxt{QAQC}, \Bigtxt{subset} one month of data and one variable of interest, \Bigtxt{combine} at hourly time step and intersect method, and \Bigtxt{plot} two variables against each other... \\~\\
+\onslide<+->
+\texttt{?import\_local}, \texttt{?qaqc}, \texttt{?subset.swmpr}, \texttt{?comb}, \texttt{?plot}
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(}\hlstr{'zip_ex'}\hlstd{,} \hlstr{'apadbwq2012'}\hlstd{)}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(wqdat)}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(wqdat,} \hlkwc{select} \hlstd{=} \hlstr{'turb'}\hlstd{,}
+  \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2012-08-01 0:0'}\hlstd{,} \hlstr{'2012-08-31 0:0'}\hlstd{))}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(}\hlstr{'zip_ex'}\hlstd{,} \hlstr{'apaebmet2012'}\hlstd{)}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(metdat)}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(metdat,} \hlkwc{select} \hlstd{=} \hlstr{'wspd'}\hlstd{,}
+ \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2012-08-01 0:0'}\hlstd{,} \hlstr{'2012-08-31 0:0'}\hlstd{))}
+\hlstd{dat} \hlkwb{<-} \hlkwd{comb}\hlstd{(wqdat, metdat,} \hlkwc{method} \hlstd{=} \hlstr{'intersect'}\hlstd{,} \hlkwc{timestep} \hlstd{=} \hlnum{60}\hlstd{)}
+\hlkwd{plot}\hlstd{(turb} \hlopt{~} \hlstd{wspd,} \hlkwc{data} \hlstd{= dat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+Bonus: can you plot a regression line on this plot? Hint: \texttt{?lm}, \texttt{?abline}
 \end{frame}
 
 %%%%%%
@@ -688,6 +742,8 @@ After break... what are some ways we can visualize or analyze the data?
 \begin{tikzpicture}
   \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
 \end{tikzpicture}}
+\vspace{0.5in}
+\centerline{After break... what are some ways we can analyze or visualize the data?}
 \vspace{0.5in}
 \Large
 \centerline{\Bigtxt{Questions??}}

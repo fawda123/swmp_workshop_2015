@@ -50,6 +50,7 @@
 \usepackage{alltt}
 \usetheme{Boadilla}
 \usecolortheme[named=CornflowerBlue]{structure}
+\usefonttheme[stillsansseriflarge]{serif}
 \usepackage{graphicx}
 \usepackage{breqn}
 \usepackage{xcolor}
@@ -63,6 +64,10 @@
 \usepackage{pgfpages}
 
 \tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
+
+% change font of frame titles and title slide
+\setbeamerfont{title}{family=\fontfamily{stillsansseriflarge}\selectfont\bfseries}
+\setbeamerfont{frametitle}{family=\fontfamily{stillsansseriflarge}\selectfont} 
 
 \newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 
@@ -220,7 +225,7 @@ Plot the data subset (\texttt{?plot.swmpr})
 
 \end{knitrout}
 Notice the missing data around October 12\textsuperscript{th} \\~\\
-The \texttt{na.approx} function (\texttt{na.approx.swmpr}) has three arguments:
+The \texttt{na.approx} function (\texttt{?na.approx.swmpr}) has three arguments:
 \begin{itemize}
 \item \texttt{object}: swmpr data object to fill
 \item \texttt{params}: name(s) of parameter to fill
@@ -232,7 +237,7 @@ The \texttt{na.approx} function (\texttt{na.approx.swmpr}) has three arguments:
 \begin{frame}[fragile]{Basic analyses with SWMPr - missing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \begin{itemize}
 \item \onslide<1->
-Use \texttt{na.approx} to interpolate the missing data (\texttt{na.approx.swmpr})
+Use \texttt{na.approx} to interpolate the missing data (\texttt{?na.approx.swmpr})
 \onslide<2->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -243,7 +248,7 @@ Use \texttt{na.approx} to interpolate the missing data (\texttt{na.approx.swmpr}
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Plot the two to see the differences
+Plot the two to see the differences (\texttt{?plot.swmpr})
 \onslide<3->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -303,7 +308,7 @@ The \texttt{smoother} function (\texttt{?smoother}) calculates a moving window a
 \item \texttt{x}: Input data object \\~\\
 \item \texttt{window}: the size of the smoothing window, defaults to five observations at the current time step \\~\\
 \item \texttt{sides}: what defines the window, centered on an observation (2, default) or use only the preceding observations (1)  \\~\\
-\item \texttt{params}: which parameters to smooth, default all
+\item \texttt{params}: which parameters to smooth, default all \\~\\
 \end{itemize}
 What would be a good window to look at seasonal or annual variation?
 \end{frame}
@@ -387,19 +392,27 @@ Repeat the analysis but use \texttt{na.approx} to fill missing data
 \hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'cbmipwq'}\hlstd{)}
 \hlstd{tmp} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
 \hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlstr{'do_mgl'}\hlstd{)}
+\hlstd{do_smooth} \hlkwb{<-} \hlkwd{smoother}\hlstd{(tmp,} \hlkwc{window} \hlstd{=} \hlnum{5000}\hlstd{)}
+\hlkwd{plot}\hlstd{(tmp)}
+\hlkwd{lines}\hlstd{(do_smooth,} \hlkwc{col} \hlstd{=} \hlstr{'red'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+Where would you use \texttt{na.approx}?
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
+\hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'cbmipwq'}\hlstd{)}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlstr{'do_mgl'}\hlstd{)}
 \hlstd{tmp} \hlkwb{<-} \hlkwd{na.approx}\hlstd{(tmp,} \hlkwc{maxgap} \hlstd{=} \hlnum{5000}\hlstd{)}
 \hlstd{do_smooth} \hlkwb{<-} \hlkwd{smoother}\hlstd{(tmp,} \hlkwc{window} \hlstd{=} \hlnum{5000}\hlstd{)}
 \hlkwd{plot}\hlstd{(tmp)}
 \hlkwd{lines}\hlstd{(do_smooth,} \hlkwc{col} \hlstd{=} \hlstr{'red'}\hlstd{)}
 \end{alltt}
 \end{kframe}
-
-{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-17-1} 
-
-}
-
-
-
 \end{knitrout}
 \onslide<+->
 Bonus: Try changing \texttt{maxgap} or \texttt{window}
@@ -498,7 +511,7 @@ Then use \texttt{boxplot} (\texttt{?boxplot}) from the R stats package
 \end{alltt}
 \end{kframe}
 
-{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-23-1} 
+{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-24-1} 
 
 }
 
@@ -519,7 +532,7 @@ Plotting functions in SWMPr: \\~\\
 \item \texttt{decomp}: time series decomposition
 \item \texttt{decomp\_cj}: time series decomposition, alternative
 \item \texttt{map\_reserve}: plot a basic map of a reserve
-\item \texttt{overplot}: plot multiple paramters on the same plot
+\item \texttt{overplot}: plot multiple parameters on the same plot
 \item \texttt{plot\_metab}: plot metabolism estimates
 \item \texttt{plot\_summary}: plot multiple summaries for a parameter
 \end{itemize}
@@ -527,6 +540,7 @@ Plotting functions in SWMPr: \\~\\
 
 %%%%%%
 \begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
 The \texttt{map\_reserve} function can be used to map sites:
 \begin{itemize}
 \item \texttt{nerr\_site\_id}: site(s) to map, usually first three letters
@@ -552,10 +566,11 @@ The \texttt{map\_reserve} function can be used to map sites:
 \end{knitrout}
 \end{column}
 \begin{column}{0.45\textwidth}
+\onslide<+->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 
-{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-25-1} 
+{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-26-1} 
 
 }
 
@@ -602,7 +617,7 @@ Plot DO, temperature, and salinity for August (\texttt{?overplot})
 \end{frame}
 
 %%%%%% 
-\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{frame}[fragile, t]{Plotting functions in SWMPr}
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -612,7 +627,7 @@ Plot DO, temperature, and salinity for August (\texttt{?overplot})
 \end{alltt}
 \end{kframe}
 
-{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-28-1} 
+{\centering \includegraphics[width=\textwidth]{figure/unnamed-chunk-29-1} 
 
 }
 
@@ -648,7 +663,7 @@ Import all years of data for cbmip, plot a summary of temperature (\texttt{?plot
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile, t]{Plotting functions in SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\begin{frame}[fragile, t]{Plotting functions in SWMPr}
 
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -658,7 +673,7 @@ Import all years of data for cbmip, plot a summary of temperature (\texttt{?plot
 \end{alltt}
 \end{kframe}
 
-{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-31-1} 
+{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-32-1} 
 
 }
 
@@ -670,7 +685,7 @@ Import all years of data for cbmip, plot a summary of temperature (\texttt{?plot
 %%%%%%
 \begin{frame}{Additional resources}
 You've been exposed to some basic tools to \Bigtxt{retrieve}, \Bigtxt{organize}, and \Bigtxt{analyze} SWMP data with SWMPr \\~\\
-There are multiple resources availabe for reference and continued learning: \\~\\
+There are multiple resources available for continued learning: \\~\\
 \begin{itemize}
 \item \href{http://swmprats.net/}{swmprats.net}
 \begin{itemize}

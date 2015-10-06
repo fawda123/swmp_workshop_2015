@@ -1,6 +1,7 @@
 \documentclass[xcolor=dvipsnames]{beamer}
 \usetheme{Boadilla}
 \usecolortheme[named=CornflowerBlue]{structure}
+\usefonttheme[stillsansseriflarge]{serif}
 \usepackage{graphicx}
 \usepackage{breqn}
 \usepackage{xcolor}
@@ -15,13 +16,17 @@
 
 \tikzstyle{block} = [rectangle, draw, text width=9em, text centered, rounded corners, minimum height=3em, minimum width=7em, top color = white, bottom color=brown!30,  drop shadow]
 
+% change font of frame titles and title slide
+\setbeamerfont{title}{family=\fontfamily{stillsansseriflarge}\selectfont\bfseries}
+\setbeamerfont{frametitle}{family=\fontfamily{stillsansseriflarge}\selectfont} 
+
 \newcommand{\ShowSexpr}[1]{\texttt{{\char`\\}Sexpr\{#1\}}}
 
 \newcommand{\Bigtxt}[1]{\textbf{\textit{#1}}}
 
 \begin{document}
 
-\title[SWMPr overview, retrieve, and organize]{SWMPr overview, retrieve, and organize}
+\title[SWMPr overview]{SWMPr overview, retrieve, and organize}
 
 \author[M. Beck, T. O'Brien]{Marcus W. Beck\inst{1} \and Todd D. O'Brien\inst{2}}
 
@@ -79,7 +84,7 @@ Don't forget to use your stickies: {\color{green} green} for done/ok, {\color{re
 
 %%%%%%
 \begin{frame}{Why and what is SWMPr?}
-SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 300 stations in 28 US estuaries \\~\\
+SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous monitoring data at over 140 stations in 28 US estuaries \\~\\
 \centerline{\includegraphics[width = 0.8\textwidth]{imgs/NERRS_locations.png}}
 \tiny
 \flushright
@@ -88,7 +93,7 @@ SWMP - System Wide Monitoring Program, initiated in 1995 to provide continuous m
 
 %%%%%%
 \begin{frame}[t]{Why and what is SWMPr?}
-CDMO (\href{http://cdmo.baruch.sc.edu/}{link}) is your one-stop shop for retrieving SWMP data \\~\\
+\href{http://cdmo.baruch.sc.edu/}{CDMO} is your one-stop shop for retrieving SWMP data \\~\\
 \centerline{\includegraphics[width = \textwidth]{imgs/cdmo_front.png}}
 \end{frame}
 
@@ -154,7 +159,7 @@ What about this?
 <<eval = F>>=
 ?import_local
 @
-Any useful information?
+What pieces of information are in the help file?
 \end{frame}
 
 %%%%%%
@@ -187,7 +192,8 @@ Imports data obtained from (and only from) the \href{http://cdmo.baruch.sc.edu/a
 \begin{frame}[fragile]{Getting SWMP data into R \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \onslide<+->
 The `zip\_ex` folder in the project is a sample dataset that looks exactly like a folder you get from CDMO \\~\\
-Let's import some data from that folder...
+Let's import some data from that folder, try to import \texttt{`apacpwq'}...
+\onslide<+->
 <<eval = T, results = 'hide'>>=
 # get data for apacpwq, all years
 
@@ -201,7 +207,7 @@ dat <- import_local(mypath, 'apacpwq', trace = T)
 What about this?
 <<eval = F>>=
 dat2 <- import_local(mypath, 'apacp2012', trace = T)
-dat3 <- import_local(mypath, 'apadbnut', trace = T)
+dat3 <- import_local(mypath, 'apadbnut', trace = F)
 @
 
 \end{frame}
@@ -237,19 +243,6 @@ attr(dat, 'parameters')
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr}
 First problem is solved... we know how to get SWMP data from CDMO into R: \\~\\
-\begin{itemize}
-\item Download a dataset from zip downloads \\~\\
-\item Find where the data have downloaded \\~\\
-\item Import using \texttt{import_local} \\~\\
-\item Have a look at the data (\texttt{head}, \texttt{View}, \texttt{attributes}) \\~\\
-\item Lost? Check the help files: \texttt{?import\_local}\\~\\
-\end{itemize}
-Now we can think about preprocessing or organizing prior to analysis
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr}
-Problem 1 solved... we know how to get SWMP data from CDMO into R: \\~\\
 \begin{itemize}
 \item Download a dataset from zip downloads \\~\\
 \item Find where the data have downloaded \\~\\
@@ -315,7 +308,6 @@ View(dat2)
 \onslide<+->
 Try playing with the \texttt{qaqc\_keep} argument (\texttt{?qaqc})... \\~\\
 How are these different?
-\onslide<+->
 <<eval = T>>=
 # different options for qaqc
 dat2 <- qaqc(dat)
@@ -323,6 +315,7 @@ dat3 <- qaqc(dat, qaqc_keep = c('0', '-1'))
 dat4 <- qaqc(dat, qaqc_keep = NULL)
 dat5 <- qaqc(dat, qaqc_keep = 'CSM')
 @
+\onslide<+->
 Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
 <<eval = F>>=
 qaqcchk(dat)
@@ -336,7 +329,7 @@ qaqcchk(dat5)
 %%%%%%
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}} 
 \onslide<+->
-We'll continue with the water quality data for apawq - import again and run the \texttt{qaqc} function
+We'll continue with the water quality data for apadb - import again and run the \texttt{qaqc} function
 \onslide<+->
 <<>>=
 # import apawq
@@ -347,6 +340,7 @@ dat <- qaqc(dat)
 \onslide<+->
 What is the next logical step after dealing with QAQC values? \\~\\
 How would we further want to organize the data? \\~\\
+\onslide<+->
 Maybe we want to subset the data... 
 <<eval = F>>=
 # view help file
@@ -431,21 +425,15 @@ Subset a date range
 dates <- c('2012-01-01 0:0', '2012-01-31 0:0')
 tmp <- subset(tmp, subset = dates)
 @
-\end{itemize}
-\end{frame}
-
-%%%%%%
-\begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
-\onslide<+->
-Bonus: What if we want to select all values before or after a date?  \\~\\
-See \texttt{?subset.swmpr}, requires the \texttt{operator} argument
-\onslide<+->
+\item \onslide<6->
+Bonus: can you select all observations before or after a date?
+\onslide<7->
 <<eval = F>>=
-# get observations for 2013
+# get observations after Jan 1, 2013
 dates <- '2013-01-01 00:00'
 tmp <- subset(dat, subset = dates, operator = '>=')
-head(tmp)
 @
+\end{itemize}
 \end{frame}
 
 %%%%%%
@@ -460,7 +448,7 @@ dat_met <- qaqc(dat_met)
 dat_wq <- import_local(mypath, 'apadbwq')
 dat_wq <- qaqc(dat_wq)
 
-# what does this do?
+# what does this do (hint: use View to see the data)?
 tmp1 <- comb(dat_wq, dat_met, timestep = 120)
 @
 \onslide<+->
@@ -468,6 +456,44 @@ Now try this...
 <<eval = F>>=
 tmp2 <- setstep(dat_wq, timestep = 60)
 @
+What happened?
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Organize SWMP data}
+The \texttt{setstep} function is used to standardize the time step of a \texttt{swmpr} object \\~\\
+The \texttt{comb} function is used to combine \texttt{swmpr} objects \\~\\
+\texttt{setstep} is used within \texttt{comb} so you should not have to use it directly \\~\\
+Arguments for \texttt{comb}: \\~\\
+\begin{itemize}
+\item ... : input swmpr data, separated by comma
+\item timestep: minutes defining the standardized time step
+\item differ: maximum difference in minutes for matching observations with original time steps to standardized time steps
+\item method: how the data are combined using the time stamps - union, intersect, or using a station
+\end{itemize}
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{Organize SWMP data}
+\onslide<1->
+A final note about combining... what about combining data with different \Bigtxt{time ranges}?\\~\\
+Consider combining two datasets \\~\\
+\begin{itemize}
+\item \onslide<2-> \Bigtxt{Scenario 1}: Time ranges are the same
+\begin{itemize}
+\item \onslide<3-> all methods can be used, same results for each
+\end{itemize}
+\item \onslide<4-> \Bigtxt{Scenario 2}: Time ranges are not the same, but there is overlap
+\begin{itemize}
+\item \onslide<5-> all methods can be used, different results for each
+\end{itemize}
+\item \onslide<6-> \Bigtxt{Scenario 3}: Time ranges are not the same, there is no overlap
+\begin{itemize}
+\item \onslide<7-> only \texttt{`union'} will work \\~\\
+\end{itemize}
+\end{itemize}
+\onslide<1->
+The \texttt{method} argument of allows flexibility under different scenarios - time range \texttt{`intersect'}, \texttt{`union'}, or range of one station
 \end{frame}
 
 %%%%%%
@@ -480,9 +506,31 @@ Here's what we did: \\~\\
 \item \Bigtxt{Subset} to select variables or time ranges of interest 
 \item \Bigtxt{Combine} data for comparison or data simplification \\~\\
 \end{itemize}
-Consult the SWMP cookboook for an example workflow\\~\\
-Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
-After break... what are some ways we can visualize or analyze the data?
+Consult the SWMP cookbook for an example workflow\\~\\
+Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN})
+\end{frame}
+
+%%%%%%
+\begin{frame}[fragile]{A final exercise \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
+\onslide<+->
+\Bigtxt{Import} 2012 apadbwq and apaebmet data, deal with \Bigtxt{QAQC}, \Bigtxt{subset} one month of data and one variable of interest, \Bigtxt{combine} at hourly time step and intersect method, and \Bigtxt{plot} two variables against each other... \\~\\
+\onslide<+->
+\texttt{?import\_local}, \texttt{?qaqc}, \texttt{?subset.swmpr}, \texttt{?comb}, \texttt{?plot}
+\onslide<+->
+<<eval = F>>=
+wqdat <- import_local('zip_ex', 'apadbwq2012')
+wqdat <- qaqc(wqdat)
+wqdat <- subset(wqdat, select = 'turb', 
+  subset = c('2012-08-01 0:0', '2012-08-31 0:0'))
+metdat <- import_local('zip_ex', 'apaebmet2012')
+metdat <- qaqc(metdat)
+metdat <- subset(metdat, select = 'wspd', 
+ subset = c('2012-08-01 0:0', '2012-08-31 0:0'))
+dat <- comb(wqdat, metdat, method = 'intersect', timestep = 60)
+plot(turb ~ wspd, data = dat)
+@
+\onslide<+->
+Bonus: can you plot a regression line on this plot? Hint: \texttt{?lm}, \texttt{?abline}
 \end{frame}
 
 %%%%%%
@@ -492,6 +540,8 @@ After break... what are some ways we can visualize or analyze the data?
 \begin{tikzpicture}
   \node[drop shadow={shadow xshift=0ex,shadow yshift=0ex},fill=white,draw] at (0,0) {\includegraphics[width=0.9\textwidth]{imgs/workshop_logo.png}};
 \end{tikzpicture}}
+\vspace{0.5in}
+\centerline{After break... what are some ways we can analyze or visualize the data?}
 \vspace{0.5in}
 \Large
 \centerline{\Bigtxt{Questions??}}

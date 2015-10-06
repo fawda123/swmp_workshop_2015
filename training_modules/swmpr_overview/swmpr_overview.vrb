@@ -1,12 +1,24 @@
-\frametitle{Summary}
-Now you have an idea of how to organize SWMP data for analysis!\\~\\
-Here's what we did: \\~\\
-\begin{itemize}
-\item \Bigtxt{Import} SWMP data into R
-\item Evaluate and \Bigtxt{handle QAQC} flags in the data
-\item \Bigtxt{Subset} to select variables or time ranges of interest
-\item \Bigtxt{Combine} data for comparison or data simplification \\~\\
-\end{itemize}
-Consult the SWMP cookboook for an example workflow\\~\\
-Check the help files for usage (reference manual on \href{https://cran.r-project.org/web/packages/SWMPr/index.html}{CRAN}) \\~\\
-After break... what are some ways we can visualize or analyze the data?
+\frametitle{A final exercise \includegraphics [width = 0.065\textwidth ]{imgs/swmprat.png}}
+\onslide<+->
+\Bigtxt{Import} 2012 apadbwq and apaebmet data, deal with \Bigtxt{QAQC}, \Bigtxt{subset} one month of data and one variable of interest, \Bigtxt{combine} at hourly time step and intersect method, and \Bigtxt{plot} two variables against each other... \\~\\
+\onslide<+->
+\texttt{?import\_local}, \texttt{?qaqc}, \texttt{?subset.swmpr}, \texttt{?comb}, \texttt{?plot}
+\onslide<+->
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(}\hlstr{'zip_ex'}\hlstd{,} \hlstr{'apadbwq2012'}\hlstd{)}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(wqdat)}
+\hlstd{wqdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(wqdat,} \hlkwc{select} \hlstd{=} \hlstr{'turb'}\hlstd{,}
+  \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2012-08-01 0:0'}\hlstd{,} \hlstr{'2012-08-31 0:0'}\hlstd{))}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(}\hlstr{'zip_ex'}\hlstd{,} \hlstr{'apaebmet2012'}\hlstd{)}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(metdat)}
+\hlstd{metdat} \hlkwb{<-} \hlkwd{subset}\hlstd{(metdat,} \hlkwc{select} \hlstd{=} \hlstr{'wspd'}\hlstd{,}
+ \hlkwc{subset} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'2012-08-01 0:0'}\hlstd{,} \hlstr{'2012-08-31 0:0'}\hlstd{))}
+\hlstd{dat} \hlkwb{<-} \hlkwd{comb}\hlstd{(wqdat, metdat,} \hlkwc{method} \hlstd{=} \hlstr{'intersect'}\hlstd{,} \hlkwc{timestep} \hlstd{=} \hlnum{60}\hlstd{)}
+\hlkwd{plot}\hlstd{(turb} \hlopt{~} \hlstd{wspd,} \hlkwc{data} \hlstd{= dat)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\onslide<+->
+Bonus: can you plot a regression line on this plot? Hint: \texttt{?lm}, \texttt{?abline}

@@ -1,4 +1,4 @@
-\frametitle{Plotting functions in SWMPr \includegraphics [width = 0.065\textwidth ]{imgs/swmprat.png}}
+\frametitle{Plotting functions in SWMPr}
 
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -8,7 +8,7 @@
 \end{alltt}
 \end{kframe}
 
-{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-31-1}
+{\centering \includegraphics[width=0.9\textwidth]{figure/unnamed-chunk-32-1}
 
 }
 
