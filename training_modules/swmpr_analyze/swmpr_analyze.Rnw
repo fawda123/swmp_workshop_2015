@@ -516,7 +516,7 @@ There are multiple resources available for continued learning: \\~\\
 \item Access to 2014 workshop materials \\~\\
 \end{itemize}
 \item SWMPr online reference \href{https://cran.r-project.org/web/packages/SWMPr/SWMPr.pdf}{manual}: list of all functions \\~\\
-\item SWMPr cookbook: step-by-step scripts as stand-alone analyses \\~\\
+\item SWMPr \href{https://github.com/fawda123/swmp_workshop_2015/raw/master/cookbook/swmpr_cookbook.pdf}{cookbook}: step-by-step scripts as stand-alone analyses \\~\\
 \item Email instructors: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{todd.obrien@noaa.gov}{todd.obrien@noaa.gov}
 \end{itemize}
 \end{frame}
