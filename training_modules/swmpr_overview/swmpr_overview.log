@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  6 OCT 2015 17:20
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  11 OCT 2015 14:25
 entering extended mode
 **swmpr_overview.tex
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.tex
@@ -1520,7 +1520,7 @@ File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2
 
 ]
-<imgs/swmprat.png, id=96, 255.95625pt x 204.01219pt>
+<imgs/swmprat.png, id=97, 255.95625pt x 204.01219pt>
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
 Package pdftex.def Info: imgs/swmprat.png used on input line 123.
@@ -1536,7 +1536,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 123.
  [4
 
 ]
-<imgs/NERRS_locations.png, id=150, 725.71124pt x 446.41782pt>
+<imgs/NERRS_locations.png, id=152, 725.71124pt x 446.41782pt>
 File: imgs/NERRS_locations.png Graphic file (type png)
 
 <use imgs/NERRS_locations.png>
@@ -1549,7 +1549,7 @@ Overfull \vbox (0.47113pt too high) detected at line 132
 [5
 
  <M:/docs/swmp_workshop_2015/training_modules/swmpr_overview/imgs/NERRS_locatio
-ns.png>] <imgs/cdmo_front.png, id=179, 730.22812pt x 406.51875pt>
+ns.png>] <imgs/cdmo_front.png, id=181, 730.22812pt x 406.51875pt>
 File: imgs/cdmo_front.png Graphic file (type png)
 
 <use imgs/cdmo_front.png>
@@ -1559,7 +1559,7 @@ Package pdftex.def Info: imgs/cdmo_front.png used on input line 138.
 
  <M:/docs/swmp_workshop_2015/training_modules/swmpr_overview/imgs/cdmo_front.pn
 g>]
-<imgs/qaqc_ex.png, id=206, 630.10406pt x 304.13625pt>
+<imgs/qaqc_ex.png, id=208, 630.10406pt x 304.13625pt>
 File: imgs/qaqc_ex.png Graphic file (type png)
  <use imgs/qaqc_ex.png>
 Package pdftex.def Info: imgs/qaqc_ex.png used on input line 144.
@@ -1572,7 +1572,7 @@ Package pdftex.def Info: imgs/qaqc_ex.png used on input line 144.
 
 ] [9
 
-] <imgs/swmpr_logo.png, id=286, 716.4366pt x 185.9748pt>
+] <imgs/swmpr_logo.png, id=288, 716.4366pt x 185.9748pt>
 File: imgs/swmpr_logo.png Graphic file (type png)
 
 <use imgs/swmpr_logo.png>
@@ -1604,7 +1604,13 @@ LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 7.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [13
+))
+File: imgs/swmprat.png Graphic file (type png)
+
+<use imgs/swmprat.png>
+Package pdftex.def Info: imgs/swmprat.png used on input line 188.
+(pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
+ [13
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
@@ -1736,7 +1742,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 418.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 449.
+Package pdftex.def Info: imgs/swmprat.png used on input line 445.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [32
 
@@ -1744,7 +1750,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 449.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 449.
+Package pdftex.def Info: imgs/swmprat.png used on input line 445.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [33
 
@@ -1752,7 +1758,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 449.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 479.
+Package pdftex.def Info: imgs/swmprat.png used on input line 475.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [34
 
@@ -1760,7 +1766,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 479.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 479.
+Package pdftex.def Info: imgs/swmprat.png used on input line 475.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [35
 
@@ -1768,7 +1774,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 479.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 479.
+Package pdftex.def Info: imgs/swmprat.png used on input line 475.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [36
 
@@ -1776,7 +1782,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 479.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 479.
+Package pdftex.def Info: imgs/swmprat.png used on input line 475.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [37
 
@@ -1800,7 +1806,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 479.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [42
 
@@ -1808,7 +1814,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [43
 
@@ -1816,7 +1822,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [44
 
@@ -1824,7 +1830,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [45
 
@@ -1832,7 +1838,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [46
 
@@ -1840,7 +1846,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [47
 
@@ -1848,7 +1854,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 624.
+Package pdftex.def Info: imgs/swmprat.png used on input line 620.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [48
 
@@ -1856,7 +1862,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 624.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 655.
+Package pdftex.def Info: imgs/swmprat.png used on input line 651.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [49
 
@@ -1864,7 +1870,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 655.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 655.
+Package pdftex.def Info: imgs/swmprat.png used on input line 651.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [50
 
@@ -1908,7 +1914,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 655.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 733.
+Package pdftex.def Info: imgs/swmprat.png used on input line 729.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [60
 
@@ -1916,7 +1922,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 733.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 733.
+Package pdftex.def Info: imgs/swmprat.png used on input line 729.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [61
 
@@ -1924,7 +1930,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 733.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 733.
+Package pdftex.def Info: imgs/swmprat.png used on input line 729.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [62
 
@@ -1932,14 +1938,14 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 733.
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.vrb)
 File: imgs/swmprat.png Graphic file (type png)
 <use imgs/swmprat.png>
-Package pdftex.def Info: imgs/swmprat.png used on input line 733.
+Package pdftex.def Info: imgs/swmprat.png used on input line 729.
 (pdftex.def)             Requested size: 22.25002pt x 17.73459pt.
  [63
 
 ]
 File: imgs/workshop_logo.png Graphic file (type png)
  <use imgs/workshop_logo.png>
-Package pdftex.def Info: imgs/workshop_logo.png used on input line 747.
+Package pdftex.def Info: imgs/workshop_logo.png used on input line 743.
 (pdftex.def)             Requested size: 308.06367pt x 63.67676pt.
  [64
 
@@ -1947,15 +1953,15 @@ Package pdftex.def Info: imgs/workshop_logo.png used on input line 747.
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 749.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 749.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
 
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_overview\swmpr_overview.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 749.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 749.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
 Package rerunfilecheck Info: File `swmpr_overview.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 749.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 745.
  ) 
 Here is how much of TeX's memory you used:
  25148 strings out of 493921
@@ -1976,9 +1982,9 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 symbols/msam7.pfb>
-Output written on swmpr_overview.pdf (64 pages, 3590336 bytes).
+Output written on swmpr_overview.pdf (64 pages, 3591997 bytes).
 PDF statistics:
- 1804 PDF objects out of 2073 (max. 8388607)
+ 1806 PDF objects out of 2073 (max. 8388607)
  129 named destinations out of 1000 (max. 500000)
  175 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -111,10 +111,10 @@
 %%%%%%
 \begin{frame}{Interactive portion}
 \onslide<+->
-We will use the swmpr1.Rproj project for this session, double-click to open in RStudio \\~\\
+We will use the swmpr\_overview.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
-\item location on flash drive\\~\\
-\item location online \\~\\
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2015 workshop tab \\~\\
 \end{itemize}
 \onslide<+->
 You will run examples whenever you see this guy: \\~\\
@@ -171,7 +171,7 @@ What are the challenges for evaluating SWMP data? \\~\\
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Why and what is SWMPr?}
+\begin{frame}[fragile]{Why and what is SWMPr? \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 Some housekeeping...
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -272,7 +272,7 @@ What about this?
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{dat2} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apacp2012'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
+\hlstd{dat2} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apacpwq2012'}\hlstd{,} \hlkwc{trace} \hlstd{= T)}
 \hlstd{dat3} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbnut'}\hlstd{,} \hlkwc{trace} \hlstd{= F)}
 \end{alltt}
 \end{kframe}
@@ -434,15 +434,11 @@ How are these different?
 \end{kframe}
 \end{knitrout}
 \onslide<+->
-Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
+Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on the original data
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{qaqcchk}\hlstd{(dat)}
-\hlkwd{qaqcchk}\hlstd{(dat2)}
-\hlkwd{qaqcchk}\hlstd{(dat3)}
-\hlkwd{qaqcchk}\hlstd{(dat4)}
-\hlkwd{qaqcchk}\hlstd{(dat5)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -564,7 +560,7 @@ The dates must have a specific format: `YYYY-mm-dd HH:MM'
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \begin{itemize}
 \item \onslide<1->
-Import the weather data at apaeb
+Import the weather data at apaeb (\texttt{?import\_local})
 \onslide<2->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -576,7 +572,7 @@ Import the weather data at apaeb
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Deal with QAQC columns
+Deal with QAQC columns (\texttt{?qaqc})
 \onslide<3->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -587,18 +583,18 @@ Deal with QAQC columns
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Select two columns of interest
+Select two columns of interest (\texttt{?subset.swmpr})
 \onslide<4->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'temp'}\hlstd{,} \hlstr{'wind'}\hlstd{))}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlkwd{c}\hlstd{(}\hlstr{'atemp'}\hlstd{,} \hlstr{'wspd'}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Subset a date range
+Subset a date range (\texttt{?subset.swmpr})
 \onslide<5->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -637,7 +633,7 @@ Run the following, view the results, discuss with your neighbors:
 \hlstd{dat_wq} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'apadbwq'}\hlstd{)}
 \hlstd{dat_wq} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat_wq)}
 
-\hlcom{# what does this do (hint: use View to see the data)?}
+\hlcom{# what does this do (hint: use View or head to see the data)?}
 \hlstd{tmp1} \hlkwb{<-} \hlkwd{comb}\hlstd{(dat_wq, dat_met,} \hlkwc{timestep} \hlstd{=} \hlnum{120}\hlstd{)}
 \end{alltt}
 \end{kframe}

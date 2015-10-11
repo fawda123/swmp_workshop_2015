@@ -70,10 +70,10 @@ devtools::load_all('M:/docs/SWMPr')
 %%%%%%
 \begin{frame}{Interactive portion}
 \onslide<+->
-We will use the swmpr1.Rproj project for this session, double-click to open in RStudio \\~\\
+We will use the swmpr\_overview.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
-\item location on flash drive\\~\\
-\item location online \\~\\
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2015 workshop tab \\~\\
 \end{itemize}
 \onslide<+->
 You will run examples whenever you see this guy: \\~\\
@@ -130,7 +130,7 @@ What are the challenges for evaluating SWMP data? \\~\\
 \end{frame}
 
 %%%%%%
-\begin{frame}[fragile]{Why and what is SWMPr?}
+\begin{frame}[fragile]{Why and what is SWMPr? \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 Some housekeeping...
 <<eval = F>>=
 # install from CRAN (only do once)
@@ -205,7 +205,7 @@ dat <- import_local(mypath, 'apacpwq', trace = T)
 \onslide<+->
 What about this?
 <<eval = F>>=
-dat2 <- import_local(mypath, 'apacp2012', trace = T)
+dat2 <- import_local(mypath, 'apacpwq2012', trace = T)
 dat3 <- import_local(mypath, 'apadbnut', trace = F)
 @
 
@@ -315,13 +315,9 @@ dat4 <- qaqc(dat, qaqc_keep = NULL)
 dat5 <- qaqc(dat, qaqc_keep = 'CSM')
 @
 \onslide<+->
-Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on any of the datasets 
+Changes are hard to visualize for lots of data - as a proof of concept, try running \texttt{qaqcchk} on the original data
 <<eval = F>>=
 qaqcchk(dat)
-qaqcchk(dat2)
-qaqcchk(dat3)
-qaqcchk(dat4)
-qaqcchk(dat5)
 @
 \end{frame}
 
@@ -396,7 +392,7 @@ head(tmp) # view first six rows
 \begin{frame}[fragile]{Data organization with SWMPr \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \begin{itemize}
 \item \onslide<1->
-Import the weather data at apaeb
+Import the weather data at apaeb (\texttt{?import\_local})
 \onslide<2->
 <<eval = F>>=
 mypath <- 'zip_ex'
@@ -404,21 +400,21 @@ dat <- import_local(mypath, 'apaebmet')
 @
 \vspace{0.1in}
 \item \onslide<1->
-Deal with QAQC columns
+Deal with QAQC columns (\texttt{?qaqc})
 \onslide<3->
 <<eval = F>>=
 tmp <- qaqc(dat)
 @
 \vspace{0.1in}
 \item \onslide<1->
-Select two columns of interest
+Select two columns of interest (\texttt{?subset.swmpr})
 \onslide<4->
 <<eval = F>>=
-tmp <- subset(tmp, select = c('temp', 'wind'))
+tmp <- subset(tmp, select = c('atemp', 'wspd'))
 @
 \vspace{0.1in}
 \item \onslide<1->
-Subset a date range
+Subset a date range (\texttt{?subset.swmpr})
 \onslide<5->
 <<eval = F>>=
 dates <- c('2012-01-01 0:0', '2012-01-31 0:0')
@@ -447,7 +443,7 @@ dat_met <- qaqc(dat_met)
 dat_wq <- import_local(mypath, 'apadbwq')
 dat_wq <- qaqc(dat_wq)
 
-# what does this do (hint: use View to see the data)?
+# what does this do (hint: use View or head to see the data)?
 tmp1 <- comb(dat_wq, dat_met, timestep = 120)
 @
 \onslide<+->
