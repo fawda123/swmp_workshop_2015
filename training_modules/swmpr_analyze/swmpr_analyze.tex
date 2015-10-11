@@ -110,10 +110,10 @@
 %%%%%%
 \begin{frame}{Interactive portion}
 \onslide<+->
-We will use the swmpr2.Rproj project for this session, double-click to open in RStudio \\~\\
+We will use the swmpr\_analyze.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
-\item location on flash drive\\~\\
-\item location online \\~\\
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2015 workshop tab \\~\\
 \end{itemize}
 \onslide<+->
 You will run examples whenever you see this guy: \\~\\
@@ -164,7 +164,7 @@ To start, let's import and plot some data...
 \begin{frame}[fragile]{Basic analyses with SWMPr - missing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \begin{itemize}
 \item \onslide<1->
-Import the 2012 water quality data for cbmmc from the `zip\_ex' folder
+Import the 2012 water quality data for cbmmc from the `zip\_ex' folder (\texttt{?import\_local})
 \onslide<2->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -176,7 +176,7 @@ Import the 2012 water quality data for cbmmc from the `zip\_ex' folder
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Deal with QAQC columns
+Deal with QAQC columns (\texttt{?qaqc})
 \onslide<3->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -187,7 +187,7 @@ Deal with QAQC columns
 \end{knitrout}
 \vspace{0.1in}
 \item \onslide<1->
-Select two columns of interest
+Select two columns of interest (\texttt{?subset.swmpr})
 \onslide<4->
 \begin{knitrout}\scriptsize
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -357,7 +357,7 @@ Plot results (see \texttt{?plot.swmpr} and \texttt{?lines.swmpr})
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{plot}\hlstd{(tmp)}
-\hlkwd{lines}\hlstd{(do_smooth)}
+\hlkwd{lines}\hlstd{(do_smooth,} \hlkwc{col} \hlstd{=} \hlstr{'red'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -442,7 +442,7 @@ Import all years of water quality data for cbmip from the `zip\_ex' folder, QAQC
 \hlstd{mypath} \hlkwb{<-} \hlstr{'zip_ex'}
 \hlstd{dat} \hlkwb{<-} \hlkwd{import_local}\hlstd{(mypath,} \hlstr{'cbmipwq'}\hlstd{)}
 \hlstd{tmp} \hlkwb{<-} \hlkwd{qaqc}\hlstd{(dat)}
-\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(dat,} \hlkwc{select} \hlstd{=} \hlstr{'do_mgl'}\hlstd{)}
+\hlstd{tmp} \hlkwb{<-} \hlkwd{subset}\hlstd{(tmp,} \hlkwc{select} \hlstd{=} \hlstr{'do_mgl'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -478,7 +478,7 @@ Bonus: Try different aggregation functions
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{fun_in} \hlkwb{<-} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}  \hlkwd{var}\hlstd{(x,} \hlkwc{na.rm} \hlstd{=} \hlnum{TRUE}\hlstd{)}
-\hlstd{aggtmp} \hlkwb{<-} \hlkwd{aggreswmp}\hlstd{(swmpr_in,} \hlkwc{FUN} \hlstd{= fun_in,} \hlstr{'years'}\hlstd{)}
+\hlstd{aggtmp} \hlkwb{<-} \hlkwd{aggreswmp}\hlstd{(tmp,} \hlkwc{FUN} \hlstd{= fun_in,} \hlstr{'years'}\hlstd{)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}

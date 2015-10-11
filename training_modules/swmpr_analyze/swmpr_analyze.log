@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  7 OCT 2015 11:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  11 OCT 2015 13:37
 entering extended mode
 **swmpr_analyze.tex
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.tex
@@ -1515,7 +1515,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 p_workshop_2015/training_modules/swmpr_analyze/imgs/workshop_logo.png>] [2
 
 ]
-<imgs/swmprat.png, id=95, 255.95625pt x 204.01219pt>
+<imgs/swmprat.png, id=96, 255.95625pt x 204.01219pt>
 File: imgs/swmprat.png Graphic file (type png)
  <use imgs/swmprat.png>
 Package pdftex.def Info: imgs/swmprat.png used on input line 122.
@@ -1613,7 +1613,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 212.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-6-1.pdf, id=416, 578.16pt x 198.7425pt>
+<figure/unnamed-chunk-6-1.pdf, id=418, 578.16pt x 198.7425pt>
 File: figure/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-6-1.pdf>
@@ -1624,14 +1624,14 @@ Package pdftex.def Info: figure/unnamed-chunk-6-1.pdf used on input line 5.
  <M:/docs/swmp_workshop_2015/training_modules/swmpr_analyze/figure/unnamed-chun
 k-6-1.pdf>]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-9-1.pdf, id=448, 578.16pt x 198.7425pt>
+<figure/unnamed-chunk-9-1.pdf, id=450, 578.16pt x 198.7425pt>
 File: figure/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: figure/unnamed-chunk-9-1.pdf used on input line 31.
 (pdftex.def)             Requested size: 308.06367pt x 105.89706pt.
 
-<figure/unnamed-chunk-10-1.pdf, id=449, 578.16pt x 198.7425pt>
+<figure/unnamed-chunk-10-1.pdf, id=451, 578.16pt x 198.7425pt>
 File: figure/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-10-1.pdf>
@@ -1686,7 +1686,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 284.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-11-1.pdf, id=538, 578.16pt x 216.81pt>
+<figure/unnamed-chunk-11-1.pdf, id=540, 578.16pt x 216.81pt>
 File: figure/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-11-1.pdf>
@@ -1744,7 +1744,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 365.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-16-1.pdf, id=728, 578.16pt x 180.675pt>
+<figure/unnamed-chunk-16-1.pdf, id=730, 578.16pt x 180.675pt>
 File: figure/unnamed-chunk-16-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-16-1.pdf>
@@ -1862,7 +1862,7 @@ Overfull \vbox (1.31522pt too high) detected at line 487
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-24-1.pdf, id=1021, 578.16pt x 194.7275pt>
+<figure/unnamed-chunk-24-1.pdf, id=1023, 578.16pt x 194.7275pt>
 File: figure/unnamed-chunk-24-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-24-1.pdf>
@@ -1938,7 +1938,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 523.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-26-1.pdf, id=1185, 289.08pt x 289.08pt>
+<figure/unnamed-chunk-26-1.pdf, id=1187, 289.08pt x 289.08pt>
 File: figure/unnamed-chunk-26-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-26-1.pdf>
@@ -2004,7 +2004,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 616.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-29-1.pdf, id=1349, 578.16pt x 289.08pt>
+<figure/unnamed-chunk-29-1.pdf, id=1351, 578.16pt x 289.08pt>
 File: figure/unnamed-chunk-29-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-29-1.pdf>
@@ -2033,7 +2033,7 @@ Package pdftex.def Info: imgs/swmprat.png used on input line 662.
 
 ]
 (M:\docs\swmp_workshop_2015\training_modules\swmpr_analyze\swmpr_analyze.vrb
-<figure/unnamed-chunk-32-1.pdf, id=1434, 794.97pt x 469.755pt>
+<figure/unnamed-chunk-32-1.pdf, id=1436, 794.97pt x 469.755pt>
 File: figure/unnamed-chunk-32-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-32-1.pdf>
@@ -2085,9 +2085,9 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/lm/lmtti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 symbols/msam7.pfb>
-Output written on swmpr_analyze.pdf (54 pages, 2867954 bytes).
+Output written on swmpr_analyze.pdf (54 pages, 2869174 bytes).
 PDF statistics:
- 1591 PDF objects out of 1728 (max. 8388607)
+ 1593 PDF objects out of 1728 (max. 8388607)
  109 named destinations out of 1000 (max. 500000)
  200 words of extra memory for PDF output out of 10000 (max. 10000000)
 

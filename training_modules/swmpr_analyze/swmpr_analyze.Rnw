@@ -73,10 +73,10 @@ devtools::load_all('M:/docs/SWMPr')
 %%%%%%
 \begin{frame}{Interactive portion}
 \onslide<+->
-We will use the swmpr2.Rproj project for this session, double-click to open in RStudio \\~\\
+We will use the swmpr\_analyze.Rproj project for this session, double-click to open in RStudio \\~\\
 \begin{itemize}
-\item location on flash drive\\~\\
-\item location online \\~\\
+\item flash drive\\~\\
+\item online: \href{http://swmprats.net/}{swmprats.net} 2015 workshop tab \\~\\
 \end{itemize}
 \onslide<+->
 You will run examples whenever you see this guy: \\~\\
@@ -123,7 +123,7 @@ To start, let's import and plot some data...
 \begin{frame}[fragile]{Basic analyses with SWMPr - missing data \includegraphics[width = 0.065\textwidth]{imgs/swmprat.png}}
 \begin{itemize}
 \item \onslide<1->
-Import the 2012 water quality data for cbmmc from the `zip\_ex' folder
+Import the 2012 water quality data for cbmmc from the `zip\_ex' folder (\texttt{?import\_local})
 \onslide<2->
 <<eval = F>>=
 mypath <- 'zip_ex'
@@ -131,14 +131,14 @@ dat <- import_local(mypath, 'cbmmcwq2012')
 @
 \vspace{0.1in}
 \item \onslide<1->
-Deal with QAQC columns
+Deal with QAQC columns (\texttt{?qaqc})
 \onslide<3->
 <<eval = F>>=
 tmp <- qaqc(dat)
 @
 \vspace{0.1in}
 \item \onslide<1->
-Select two columns of interest
+Select two columns of interest (\texttt{?subset.swmpr})
 \onslide<4->
 <<eval = F>>=
 tmp <- subset(tmp, select = 'do_mgl', subset = c('2012-10-01 0:0', 
@@ -262,7 +262,7 @@ Plot results (see \texttt{?plot.swmpr} and \texttt{?lines.swmpr})
 \onslide<5->
 <<eval = F>>=
 plot(tmp)
-lines(do_smooth)
+lines(do_smooth, col = 'red')
 @
 \end{itemize}
 \end{frame}
@@ -334,7 +334,7 @@ Import all years of water quality data for cbmip from the `zip\_ex' folder, QAQC
 mypath <- 'zip_ex'
 dat <- import_local(mypath, 'cbmipwq')
 tmp <- qaqc(dat)
-tmp <- subset(dat, select = 'do_mgl')
+tmp <- subset(tmp, select = 'do_mgl')
 @
 \vspace{0.1in}
 \item \onslide<1->
@@ -358,7 +358,7 @@ Bonus: Try different aggregation functions
 \onslide<6->
 <<eval = F>>=
 fun_in <- function(x)  var(x, na.rm = TRUE)
-aggtmp <- aggreswmp(swmpr_in, FUN = fun_in, 'years')
+aggtmp <- aggreswmp(tmp, FUN = fun_in, 'years')
 @
 \vspace{0.1in}
 \end{itemize}
