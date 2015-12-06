@@ -1,11 +1,10 @@
 ---
 title: "SWMPr cookbook"
 output: 
-  pdf_document:
+  html_document:
     toc: true
-    latex_engine: pdflatex
-author: Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov 
-date: Oct. 25, 2015
+author: "Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov"
+date: "Oct. 25, 2015"
 ---
 
 ```{r setup, include=FALSE}
