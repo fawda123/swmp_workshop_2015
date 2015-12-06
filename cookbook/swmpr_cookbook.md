@@ -1,18 +1,8 @@
----
-title: "SWMPr cookbook"
-output: 
-  html_document:
-    keep_md: yes
-    toc: true
-    self_contained: no
-author: "Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov"
-date: "Oct. 25, 2015"
----
+# SWMPr cookbook
+Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov  
+Oct. 25, 2015  
 
-```{r setup, include=FALSE}
-library(knitr)
-opts_chunk$set(dev = 'pdf', fig.path = 'figures/')
-```
+
 
 # Introduction
 
@@ -38,7 +28,8 @@ You will need to follow a few simple steps to use data and functions in R if you
 
 Here is a sample script of this workflow.
 
-```{r eval = F}
+
+```r
 # my startup script
 
 # load any installed packages
@@ -55,12 +46,12 @@ load(file = 'my_workspace.RData')
 
 # check what you loaded
 ls()
-
 ```
 
 Other data formats can also be imported or loaded into R.  Flat text files or comma-separated files are commonly used, although R can import many other types.  Use the following functions to import text or csv data.  Don't forget to assign your data to an object.
 
-```{r eval = F}
+
+```r
 # import data and assign
 # data are in the working directory, or use a full path
 
@@ -75,7 +66,8 @@ dat <- read.table('my_data.txt', header = T, sep = ',')
 
 Make sure you save your work when you close a session!  The most important thing to save is the script since this will include all code to import and manipulate data.  Saving data is less important if it can be reproduced on-the-fly using the script.  Save the script you're working with using the File menu at the top.  You may also want to save your data.  Just as data of different types can be imported, data can also be saved in different formats.  You will either want to save the whole workspace or individual parts (e.g., a data.frame as a .csv file).  
 
-```{r eval = F}
+
+```r
 # save the whole workspace as a .RData file
 # will be saved in the working directory
 save(list = ls(), file = 'my_workspace.RData')
@@ -88,14 +80,14 @@ write.csv(dat, 'my_data.csv')
 
 # save as text file
 write.table(dat, 'my_data.txt', sep = ',', row.names = F, quote = F)
-
 ```
 
 ## Installing packages
 
 R installs and loads packages from its library on your computer.  You can see where your library is with `.libPaths()`.  Packages that you install from CRAN or elsewhere will go in this library.  R will also look here when you load a package to see if it is installed.  Most packages will be downloaded from CRAN, although you can also download packages from Github or BioConductor.  In the latter case, you will have to first download and load the devtools package off CRAN.  Again, you will have to load a previously installed package every time you start R if you want to use its functions.  You should only have to download a package once, unless you want to re-install to get the latest version.  Here are some basics for installing and loading a package.   
 
-```{r eval = F}
+
+```r
 # install a package from CRAN
 install.packages('ggplot2')
 
@@ -129,7 +121,8 @@ You can view all the keyboard shortcuts in RStudio by clicking on Help, then key
 
 If all else fails, a Google search will usually point you in the right direction. All of the documentation that comes with R and its packages are available online.  A quick search for a function or package will lead you to the documentation. You can also access the help files on your computer in R.
 
-```{r eval = F}
+
+```r
 # access a help file for a function
 help(mean)
 
@@ -138,14 +131,14 @@ help(mean)
 
 # run the examples in the help file
 example(mean)
-
 ```
 
 # Using the SWMPr package
 
 Each of the functions in SWMPr are built around a standard workflow to retrieve, organize, and analyze SWMP data.  Help files for functions in each of the categories can be searched for using their alias tags:
 
-```{r eval = F}
+
+```r
 help.search('retrieve', package = 'SWMPr')
 help.search('organize', package = 'SWMPr')
 help.search('analyze', package = 'SWMPr')
@@ -161,7 +154,8 @@ Each of the functions in the SWMPr package usually have default values for the a
 
 This shows how to import and organize data for a single station that you downloaded.  Note that files can also be imported from the compressed directory if the .zip extension is provided in the path.
 
-```{r eval = F}
+
+```r
 # import data for apaebmet that you downloaded
 
 # this is an example path with hypothetical csv files
@@ -171,12 +165,12 @@ path <- 'C:/my_path'
 # import, qaqc, subset to remove empty columns
 dat <- import_local(path, 'apaebmet')
 dat <- subset(qaqc(dat), rem_cols = T)
-
 ```
 
 Data included in SWMPr can be loaded using the `data` function.  They can also be loaded on the fly by calling their object names directly within a function.  The available datasets include several years of observations from nutrient, water quality, and weather stations at the Apalachicola Bay reserve.  The full metadata are provided in the help files for each.  The data are included for use with examples in the help files for the main package functions.
 
-```{r eval = F, results = 'hide'}
+
+```r
 # see available datasets
 data(package = 'SWMPr')
 
@@ -197,7 +191,8 @@ data(apaebmet)
 
 This shows how to import and organize multiple stations that you downloaded in the same request. 
 
-```{r eval = F}
+
+```r
 # import data for multiple stations
 
 # this is an example path with hypothetical csv files
@@ -214,10 +209,9 @@ dat <- subset(qaqc(dat), rem_cols = T)
 
 The remainder of this cookcook will use data from muliple files that were imported and organized in the following script.  These are the example data included with the SWMPr package.
 
-```{r echo = F, message = F, results = 'hide'}
-devtools::load_all('M:/docs/SWMPr')
-```
-```{r eval = T, cache = T, warning = F}
+
+
+```r
 # combine datasets that come with SWMPr
 # qaqc and subset to remove empty columns
 dat <- comb(apacpwq, apaebmet)
@@ -228,7 +222,8 @@ dat <- subset(qaqc(dat), rem_cols = T)
 
 The imported SWMPr data are assigned to a `swmpr` object class.  A `swmpr` object is a `data.frame` for the raw data and a `list` of several descriptive attributes.  The attributes are useful metadata describing the raw data and are also used internally within SWMPr functions to keep track of information.
 
-```{r eval = F}
+
+```r
 # names of all the attributes
 names(attributes(dat))
 
@@ -242,7 +237,8 @@ attr(dat, 'timezone')
 
 Viewing the whole dataset is often impractical.  Here are some functions for viewing subsets.
 
-```{r eval = F}
+
+```r
 # View the first 1000 rows
 View(dat)
 
@@ -278,7 +274,8 @@ length(dat)
 
 Numerical summaries of the data can be obtained for the entire dataset or single variables.  In some cases, you will have to explicitly specify how missing data are handled.  For example, the default behavior of many functions is to return `NA` if missing values are in the data.  See the examples for how to change this behavior.
 
-```{r eval = F}
+
+```r
 # whole dataset
 summary(dat)
 
@@ -304,7 +301,8 @@ The SWMPr package provides several functions for reducing the volume of data.  T
 
 The subset function lets you select columns or rows of interest.
 
-```{r eval = F}
+
+```r
 # select two parameters from dat
 subset(dat, select = c('rh', 'bp'))
 
@@ -324,14 +322,16 @@ subset(dat, rem_rows = T, rem_cols = T)
 
 The setstep function lets you change the time step of your data.
 
-```{r eval = F}
+
+```r
 # change to two hour steps
 setstep(dat, timestep = 120)
 ```
 
 Aggreswmp is used to summarize data by set periods of observations.  The `aggs_out` argument can be set to `TRUE` to create boxplot summaries of data combined by aggregation periods (see below).
 
-```{r eval = F}
+
+```r
 # aggregate DO by quarters using the mean (default)
 aggreswmp(dat, by = 'quarters', params = c('do_mgl'))
 
@@ -342,20 +342,21 @@ aggreswmp(dat, by = 'months', FUN = fun_in, params = c('do_mgl'))
 
 The smoother function is a simple moving window average that can be used to reduce the variance in a parameter.  This may help to characterize a trend.
 
-```{r eval = T, fig.height = 3}
+
+```r
 # subset the data to smooth
 sub_dat <- subset(dat, subset = c('2012-07-09 00:00', '2012-07-24 00:00'))
 
 # smooth DO using a window of 50 observations
 smooth_dat <- smoother(sub_dat, window = 50, params = 'do_mgl')
-
 ```
 
 ## Dealing with missing data
 
 Missing data can be handled several ways depending on the needs of an analysis.  The following example shows how to replace missing data with the mean value of the whole time series, omit all missing values, or interpolate using `na.approx`.  This is not an exhaustive list of options.  
 
-```{r eval = F}
+
+```r
 # subset for the example
 sub_dat <- subset(dat, subset = c('2013-01-22 00:00', '2013-01-26 00:00'))
 
@@ -393,16 +394,25 @@ Graphics are virtually limitless in R.  The base installation provides several f
 
 Simple time series plots.
 
-```{r fig.height = 3}
+
+```r
 # subset dat for the example
 sub_dat <-  subset(dat, subset = c('2012-07-09 00:00', '2012-07-24 00:00'))
 
 # plot with points
 plot(do_mgl ~ datetimestamp, data = sub_dat)
+```
 
+![](figures/unnamed-chunk-20-1.pdf) 
+
+```r
 # plot with lines
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = 'l')
+```
 
+![](figures/unnamed-chunk-20-2.pdf) 
+
+```r
 # changing the default arguments, add points to graph
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = 'l', col = 
     'orange', xlab = '', ylab = 'Dissolved oxygen (mg/L)',
@@ -410,9 +420,12 @@ plot(do_mgl ~ datetimestamp, data = sub_dat, type = 'l', col =
 points(sub_dat$datetimestamp, sub_dat$do_mgl, pch = 16, cex = 0.5)
 ```
 
+![](figures/unnamed-chunk-20-3.pdf) 
+
 Multiple plots in the same window.
 
-```{r fig.height = 7}
+
+```r
 # it is often useful to open a new plot window, uncomment and run the next line
 # windows()
 
@@ -424,26 +437,12 @@ plot(temp ~ datetimestamp, data = sub_dat, type = 'l')
 plot(atemp ~ datetimestamp, data = sub_dat, type = 'l')
 ```
 
+![](figures/unnamed-chunk-21-1.pdf) 
+
 Diagnostics plots.
-```{r echo = F, message = F, results = 'hide'}
-# subset for the example
-sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'), 
-  subset = c('2013-08-01 0:0', '2013-08-15 0:0'))
 
-pdf('figures/diag_plots.pdf', height = 6)
-pairs(sub_dat)
-dev.off()
 
-pdf('figures/hist.pdf', height = 5)
-hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
-dev.off()
-
-pdf('figures/box.pdf', height = 5)
-to_plo <- data.frame(sub_dat)[, -1]
-boxplot(to_plo)
-dev.off()
-```
-```{r eval = F}
+```r
 # subset for the example
 sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'), 
   subset = c('2013-08-01 0:0', '2013-08-15 0:0'))
@@ -454,12 +453,14 @@ sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'),
 pairs(sub_dat)
 ```
 \centerline{\includegraphics[width = \textwidth]{figures/diag_plots.pdf}}
-```{r eval = F}
+
+```r
 # histograms
 hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
 ```
 \centerline{\includegraphics[width = 0.6\textwidth]{figures/hist.pdf}}
-```{r eval = F}
+
+```r
 # boxplots
 # must remove datetimestamp
 to_plo <- data.frame(sub_dat)[, -1]
@@ -468,15 +469,9 @@ boxplot(to_plo)
 \centerline{\includegraphics[width = 0.6\textwidth]{figures/box.pdf}}
 
 A boxplot of aggregation results.
-```{r echo = F, message = F, results = 'hide'}
-to_plo <- aggreswmp(dat, by = 'quarters', params = 'do_mgl', 
-  aggs_out = T)
 
-# plot
-pdf('figures/box_agg.pdf', height = 4.5, width = 8.5)
-boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = 'DO (mg/L)')
-dev.off()
-```{r eval = F}
+
+```r
 # aggregate by DO by seasons/quarters
 to_plo <- aggreswmp(dat, by = 'quarters', params = 'do_mgl', 
   aggs_out = T)
@@ -490,7 +485,8 @@ boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = 'DO (mg/L)')
 
 The ggplot2 package offers many plotting features that are incredibly useful .  We present some examples here to illustrate plotting multiple variables on the same scale.
 
-```{r eval = F}
+
+```r
 # install ggplot2, should be installed with SWMPr
 install.packages('ggplot2')
 
@@ -500,7 +496,8 @@ install.packages('reshape2')
 
 A multivariate time series plot with ggplot2.
 
-```{r fig.height =6}
+
+```r
 # subset for the example
 sub_dat <-  subset(dat, subset = c('2012-07-09 00:00', '2012-07-24 00:00'),
   select = c('do_mgl', 'atemp', 'temp'))
@@ -520,10 +517,12 @@ p <- ggplot(to_plo, aes(x = datetimestamp, y = value)) +
 p
 ```
 
+![](figures/unnamed-chunk-29-1.pdf) 
+
 Using aggregation and ggplot2 to plot multiple variables.
 
-```{r fig.height = 6, message = F, results = 'hide', warning = F}
 
+```r
 # aggregate by season
 agg_dat <- aggreswmp(dat, by = 'quarters', 
   params = c('do_mgl', 'temp', 'atemp'), aggs_out = T)
@@ -540,41 +539,56 @@ p <- ggplot(to_plo, aes(x = factor(datetimestamp), y = value)) +
 p
 ```
 
+![](figures/unnamed-chunk-30-1.pdf) 
+
 ## Plotting functions in SWMPr
 
 The `map_reserve` function uses the ggmap package to create a plot of the stations at a reserve.  The ggmap package should install and load automatically when you use SWMPr. You will have to play with the `zoom` argument as the spatial extent varies at each reserve. 
 
-```{r fig.height = 6, message = F, warning = F, results = 'hide'}
+
+```r
 map_reserve('jac', zoom = 11)
 ```
 
+![](figures/unnamed-chunk-31-1.pdf) 
+
 Create a summary plot using `plot_summary` in SWMPr.  This plot is a multi-panel collection of ggplot objects that can be used to quickly evaluate a variable over time.
 
-```{r, fig.height = 7, fig.width = 12, out.width = '\\textwidth', warning = F}
+
+```r
 # summary plot using the nutrient data
 plot_summary(apacpnut, 'chla_n')
 ```
 
+<img src="figures/unnamed-chunk-32-1.pdf" title="" alt="" width="\textwidth" />
+
 The `overplot` function can plot more than one variable on the same axis.  
 
-```{r, fig.height = 4, fig.width = 7, out.width = '\\textwidth'}
+
+```r
 # plot multiple variables on the same axis
 overplot(dat, select = c('do_mgl', 'temp'),
  subset = c('2013-01-01 0:0', '2013-02-01 0:0'), lwd = 2)
 ```
 
+<img src="figures/unnamed-chunk-33-1.pdf" title="" alt="" width="\textwidth" />
+
 Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Both are similar and return a plot of decomposed time series from the original.
 
-```{r, fig.height = 6, fig.width = 6, out.width = '\\textwidth', warning = F}
+
+```r
 # decompose the chlorophyll time series
 decomp_cj(apacpnut, param = 'chla_n')
 ```
+
+<img src="figures/unnamed-chunk-34-1.pdf" title="" alt="" width="\textwidth" />
 
 ## Saving graphics
 
 A graphic can be saved in different formats using the file menu in the plot window, or using the Export option in RStudio.  You can also save graphics using specific commands that are run in the console.  The following shows how to save a graphic as a pdf or png file.
 
-```{r eval = F}
+
+```r
 # save a pdf graphic, will go to the working directory
 # height, width in inches
 pdf('my_plot.pdf', height = 6, width = 6)
