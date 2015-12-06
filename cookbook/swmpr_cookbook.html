@@ -404,16 +404,16 @@ sub_dat &lt;-  subset(dat, subset = c(&#39;2012-07-09 00:00&#39;, &#39;2012-07-2
 
 # plot with points
 plot(do_mgl ~ datetimestamp, data = sub_dat)</code></pre>
-<p><embed src="figures/unnamed-chunk-20-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-20-1.png" /></p>
 <pre class="r"><code># plot with lines
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)</code></pre>
-<p><embed src="figures/unnamed-chunk-20-2.pdf" /></p>
+<p><img src="figures/unnamed-chunk-20-2.png" /></p>
 <pre class="r"><code># changing the default arguments, add points to graph
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;, col = 
     &#39;orange&#39;, xlab = &#39;&#39;, ylab = &#39;Dissolved oxygen (mg/L)&#39;,
   cex.axis = 0.8, bty = &#39;n&#39;)
 points(sub_dat$datetimestamp, sub_dat$do_mgl, pch = 16, cex = 0.5)</code></pre>
-<p><embed src="figures/unnamed-chunk-20-3.pdf" /></p>
+<p><img src="figures/unnamed-chunk-20-3.png" /></p>
 <p>Multiple plots in the same window.</p>
 <pre class="r"><code># it is often useful to open a new plot window, uncomment and run the next line
 # windows()
@@ -424,7 +424,7 @@ par(mfrow = c(3, 1))
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)
 plot(temp ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)
 plot(atemp ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)</code></pre>
-<p><embed src="figures/unnamed-chunk-21-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-21-1.png" /></p>
 <p>Diagnostics plots.</p>
 <pre class="r"><code># subset for the example
 sub_dat &lt;- subset(dat, select = c(&#39;sal&#39;, &#39;temp&#39;, &#39;do_mgl&#39;), 
@@ -434,15 +434,15 @@ sub_dat &lt;- subset(dat, select = c(&#39;sal&#39;, &#39;temp&#39;, &#39;do_mgl&
 # a pairs plot is a matrix of bivariate scatterplots
 # caution, this plot may take a while to load for large datasets
 pairs(sub_dat)</code></pre>
-<p><embed src="figures/diag_plots.pdf" /></p>
+<p><img src="figures/diag_plots.png" /></p>
 <pre class="r"><code># histograms
 hist(sub_dat$sal, xlab = &#39;Salinity&#39;, main = &#39;Histogram&#39;)</code></pre>
-<p><embed src="figures/hist.pdf" /></p>
+<p><img src="figures/hist.png" /></p>
 <pre class="r"><code># boxplots
 # must remove datetimestamp
 to_plo &lt;- data.frame(sub_dat)[, -1]
 boxplot(to_plo)</code></pre>
-<p><embed src="figures/box.pdf" /></p>
+<p><img src="figures/box.png" /></p>
 <p>A boxplot of aggregation results.</p>
 <pre class="r"><code># aggregate by DO by seasons/quarters
 to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;, 
@@ -450,7 +450,7 @@ to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;,
 
 # plot
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = &#39;DO (mg/L)&#39;)</code></pre>
-<p><embed src="figures/box_agg.pdf" /></p>
+<p><img src="figures/box_agg.png" /></p>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
 <h2>Plotting with ggplot2</h2>
@@ -478,7 +478,7 @@ p &lt;- ggplot(to_plo, aes(x = datetimestamp, y = value)) +
   facet_wrap(~ variable, ncol = 1, scales = &#39;free_y&#39;) + 
   theme_bw()
 p</code></pre>
-<p><embed src="figures/unnamed-chunk-29-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-29-1.png" /></p>
 <p>Using aggregation and ggplot2 to plot multiple variables.</p>
 <pre class="r"><code># aggregate by season
 agg_dat &lt;- aggreswmp(dat, by = &#39;quarters&#39;, 
@@ -494,33 +494,33 @@ p &lt;- ggplot(to_plo, aes(x = factor(datetimestamp), y = value)) +
   theme_bw() +
   theme(axis.text.x = element_text(size = 5))
 p</code></pre>
-<p><embed src="figures/unnamed-chunk-30-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-30-1.png" /></p>
 </div>
 <div id="plotting-functions-in-swmpr" class="section level2">
 <h2>Plotting functions in SWMPr</h2>
 <p>The <code>map_reserve</code> function uses the ggmap package to create a plot of the stations at a reserve. The ggmap package should install and load automatically when you use SWMPr. You will have to play with the <code>zoom</code> argument as the spatial extent varies at each reserve.</p>
 <pre class="r"><code>map_reserve(&#39;jac&#39;, zoom = 11)</code></pre>
-<p><embed src="figures/unnamed-chunk-31-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-31-1.png" /></p>
 <p>Create a summary plot using <code>plot_summary</code> in SWMPr. This plot is a multi-panel collection of ggplot objects that can be used to quickly evaluate a variable over time.</p>
 <pre class="r"><code># summary plot using the nutrient data
 plot_summary(apacpnut, &#39;chla_n&#39;)</code></pre>
-<p><embed src="figures/unnamed-chunk-32-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-32-1.png" /></p>
 <p>The <code>overplot</code> function can plot more than one variable on the same axis.</p>
 <pre class="r"><code># plot multiple variables on the same axis
 overplot(dat, select = c(&#39;do_mgl&#39;, &#39;temp&#39;),
  subset = c(&#39;2013-01-01 0:0&#39;, &#39;2013-02-01 0:0&#39;), lwd = 2)</code></pre>
-<p><embed src="figures/unnamed-chunk-33-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-33-1.png" /></p>
 <p>Time series decomposition can be accomplished with <code>decomp</code> or <code>decomp_cj</code>. Both are similar and return a plot of decomposed time series from the original.</p>
 <pre class="r"><code># decompose the chlorophyll time series
 decomp_cj(apacpnut, param = &#39;chla_n&#39;)</code></pre>
-<p><embed src="figures/unnamed-chunk-34-1.pdf" /></p>
+<p><img src="figures/unnamed-chunk-34-1.png" /></p>
 </div>
 <div id="saving-graphics" class="section level2">
 <h2>Saving graphics</h2>
-<p>A graphic can be saved in different formats using the file menu in the plot window, or using the Export option in RStudio. You can also save graphics using specific commands that are run in the console. The following shows how to save a graphic as a pdf or png file.</p>
-<pre class="r"><code># save a pdf graphic, will go to the working directory
+<p>A graphic can be saved in different formats using the file menu in the plot window, or using the Export option in RStudio. You can also save graphics using specific commands that are run in the console. The following shows how to save a graphic as a png or png file.</p>
+<pre class="r"><code># save a png graphic, will go to the working directory
 # height, width in inches
-pdf(&#39;my_plot.pdf&#39;, height = 6, width = 6)
+png(&#39;my_plot.png&#39;, height = 6, width = 6, units = &#39;in&#39;, res = 300)
 
 # ggplot graphic from earlier
 p

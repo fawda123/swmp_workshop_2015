@@ -11,7 +11,7 @@ date: "Oct. 25, 2015"
 
 ```{r setup, include=FALSE}
 library(knitr)
-opts_chunk$set(dev = 'pdf', fig.path = 'figures/')
+opts_chunk$set(fig.path = 'figures/')
 ```
 
 # Introduction
@@ -443,15 +443,15 @@ Diagnostics plots.
 sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'), 
   subset = c('2013-08-01 0:0', '2013-08-15 0:0'))
 
-pdf('figures/diag_plots.pdf', height = 6)
+png('figures/diag_plots.png', height = 6, units = 'in', res = 300)
 pairs(sub_dat)
 dev.off()
 
-pdf('figures/hist.pdf', height = 5)
+png('figures/hist.png', height = 5, units = 'in', res = 300)
 hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
 dev.off()
 
-pdf('figures/box.pdf', height = 5)
+png('figures/box.png', height = 5, units = 'in', res = 300)
 to_plo <- data.frame(sub_dat)[, -1]
 boxplot(to_plo)
 dev.off()
@@ -466,19 +466,19 @@ sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'),
 # caution, this plot may take a while to load for large datasets
 pairs(sub_dat)
 ```
-![](figures/diag_plots.pdf)
+![](figures/diag_plots.png)
 ```{r eval = F}
 # histograms
 hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
 ```
-![](figures/hist.pdf)
+![](figures/hist.png)
 ```{r eval = F}
 # boxplots
 # must remove datetimestamp
 to_plo <- data.frame(sub_dat)[, -1]
 boxplot(to_plo)
 ```
-![](figures/box.pdf)
+![](figures/box.png)
 
 A boxplot of aggregation results.
 ```{r echo = F, message = F, results = 'hide'}
@@ -486,7 +486,7 @@ to_plo <- aggreswmp(dat, by = 'quarters', params = 'do_mgl',
   aggs_out = T)
 
 # plot
-pdf('figures/box_agg.pdf', height = 4.5, width = 8.5)
+png('figures/box_agg.png', height = 4.5, width = 8.5, units = 'in', res = 300)
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = 'DO (mg/L)')
 dev.off()
 ```
@@ -498,7 +498,7 @@ to_plo <- aggreswmp(dat, by = 'quarters', params = 'do_mgl',
 # plot
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = 'DO (mg/L)')
 ```
-![](figures/box_agg.pdf)
+![](figures/box_agg.png)
 
 ## Plotting with ggplot2
 
@@ -586,12 +586,12 @@ decomp_cj(apacpnut, param = 'chla_n')
 
 ## Saving graphics
 
-A graphic can be saved in different formats using the file menu in the plot window, or using the Export option in RStudio.  You can also save graphics using specific commands that are run in the console.  The following shows how to save a graphic as a pdf or png file.
+A graphic can be saved in different formats using the file menu in the plot window, or using the Export option in RStudio.  You can also save graphics using specific commands that are run in the console.  The following shows how to save a graphic as a png or png file.
 
 ```{r eval = F}
-# save a pdf graphic, will go to the working directory
+# save a png graphic, will go to the working directory
 # height, width in inches
-pdf('my_plot.pdf', height = 6, width = 6)
+png('my_plot.png', height = 6, width = 6, units = 'in', res = 300)
 
 # ggplot graphic from earlier
 p
