@@ -102,20 +102,33 @@ library(SWMPr)
 
 You can view all the keyboard shortcuts in RStudio by clicking on Help, then keyboard shortcuts on the top menu.  Here are some common shortcuts for Windows/Linux (* denotes RStudio only). 
 
-\texttt{CTRL+ENTER} \hfill run selection * \newline
-\texttt{CTRL+R} \hfill run selection \newline
-\texttt{CTRL+L} \hfill clear console \newline
-\texttt{CTRL+A} \hfill select all \newline
-\texttt{CTRL+C} \hfill copy \newline
-\texttt{CTRL+X} \hfill cut \newline
-\texttt{CTRL+V} \hfill paste \newline
-\texttt{CTRL+O} \hfill open document \newline
-\texttt{CTRL+S} \hfill save document \newline
-\texttt{CTRL+1} \hfill switch to source * \newline
-\texttt{CTRL+2} \hfill switch to console * \newline
-\texttt{ESC} \hfill stop current execution \newline
-\texttt{HOME} \hfill skip to beginning of line \newline
-\texttt{END} \hfill skip to end of line
+*CTRL+ENTER* run selection * 
+
+*CTRL+R* run selection 
+
+*CTRL+L* clear console 
+
+*CTRL+A* select all 
+
+*CTRL+C* copy 
+
+*CTRL+X* cut 
+
+*CTRL+V* paste 
+
+*CTRL+O* open document 
+
+*CTRL+S* save document 
+
+*CTRL+1* switch to source * 
+
+*CTRL+2* switch to console * 
+
+*ESC* stop current execution 
+
+*HOME* skip to beginning of line 
+
+*END* skip to end of line
 
 ## Getting help
 
@@ -452,13 +465,13 @@ sub_dat <- subset(dat, select = c('sal', 'temp', 'do_mgl'),
 # caution, this plot may take a while to load for large datasets
 pairs(sub_dat)
 ```
-\centerline{\includegraphics[width = \textwidth]{figures/diag_plots.pdf}}
+![](figures/diag_plots.pdf)
 
 ```r
 # histograms
 hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
 ```
-\centerline{\includegraphics[width = 0.6\textwidth]{figures/hist.pdf}}
+![](figures/hist.pdf)
 
 ```r
 # boxplots
@@ -466,7 +479,7 @@ hist(sub_dat$sal, xlab = 'Salinity', main = 'Histogram')
 to_plo <- data.frame(sub_dat)[, -1]
 boxplot(to_plo)
 ```
-\centerline{\includegraphics[width = 0.6\textwidth]{figures/box.pdf}}
+![](figures/box.pdf)
 
 A boxplot of aggregation results.
 
@@ -479,7 +492,7 @@ to_plo <- aggreswmp(dat, by = 'quarters', params = 'do_mgl',
 # plot
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = 'DO (mg/L)')
 ```
-\centerline{\includegraphics[width = 0.9\textwidth]{figures/box_agg.pdf}}
+![](figures/box_agg.pdf)
 
 ## Plotting with ggplot2
 
@@ -560,7 +573,7 @@ Create a summary plot using `plot_summary` in SWMPr.  This plot is a multi-panel
 plot_summary(apacpnut, 'chla_n')
 ```
 
-<img src="figures/unnamed-chunk-32-1.pdf" title="" alt="" width="\textwidth" />
+![](figures/unnamed-chunk-32-1.pdf) 
 
 The `overplot` function can plot more than one variable on the same axis.  
 
@@ -571,7 +584,7 @@ overplot(dat, select = c('do_mgl', 'temp'),
  subset = c('2013-01-01 0:0', '2013-02-01 0:0'), lwd = 2)
 ```
 
-<img src="figures/unnamed-chunk-33-1.pdf" title="" alt="" width="\textwidth" />
+![](figures/unnamed-chunk-33-1.pdf) 
 
 Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Both are similar and return a plot of decomposed time series from the original.
 
@@ -581,7 +594,7 @@ Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Bot
 decomp_cj(apacpnut, param = 'chla_n')
 ```
 
-<img src="figures/unnamed-chunk-34-1.pdf" title="" alt="" width="\textwidth" />
+![](figures/unnamed-chunk-34-1.pdf) 
 
 ## Saving graphics
 

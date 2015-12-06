@@ -173,7 +173,20 @@ library(SWMPr)</code></pre>
 <div id="keyboard-shortcuts" class="section level2">
 <h2>Keyboard shortcuts</h2>
 <p>You can view all the keyboard shortcuts in RStudio by clicking on Help, then keyboard shortcuts on the top menu. Here are some common shortcuts for Windows/Linux (* denotes RStudio only).</p>
-<p> run selection *  run selection  clear console  select all  copy  cut  paste  open document  save document  switch to source *  switch to console *  stop current execution  skip to beginning of line  skip to end of line</p>
+<p><em>CTRL+ENTER</em> run selection *</p>
+<p><em>CTRL+R</em> run selection</p>
+<p><em>CTRL+L</em> clear console</p>
+<p><em>CTRL+A</em> select all</p>
+<p><em>CTRL+C</em> copy</p>
+<p><em>CTRL+X</em> cut</p>
+<p><em>CTRL+V</em> paste</p>
+<p><em>CTRL+O</em> open document</p>
+<p><em>CTRL+S</em> save document</p>
+<p><em>CTRL+1</em> switch to source *</p>
+<p><em>CTRL+2</em> switch to console *</p>
+<p><em>ESC</em> stop current execution</p>
+<p><em>HOME</em> skip to beginning of line</p>
+<p><em>END</em> skip to end of line</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2>Getting help</h2>
@@ -421,15 +434,15 @@ sub_dat &lt;- subset(dat, select = c(&#39;sal&#39;, &#39;temp&#39;, &#39;do_mgl&
 # a pairs plot is a matrix of bivariate scatterplots
 # caution, this plot may take a while to load for large datasets
 pairs(sub_dat)</code></pre>
-
+<p><embed src="figures/diag_plots.pdf" /></p>
 <pre class="r"><code># histograms
 hist(sub_dat$sal, xlab = &#39;Salinity&#39;, main = &#39;Histogram&#39;)</code></pre>
-
+<p><embed src="figures/hist.pdf" /></p>
 <pre class="r"><code># boxplots
 # must remove datetimestamp
 to_plo &lt;- data.frame(sub_dat)[, -1]
 boxplot(to_plo)</code></pre>
-
+<p><embed src="figures/box.pdf" /></p>
 <p>A boxplot of aggregation results.</p>
 <pre class="r"><code># aggregate by DO by seasons/quarters
 to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;, 
@@ -437,7 +450,7 @@ to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;,
 
 # plot
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = &#39;DO (mg/L)&#39;)</code></pre>
-
+<p><embed src="figures/box_agg.pdf" /></p>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
 <h2>Plotting with ggplot2</h2>
@@ -491,16 +504,16 @@ p</code></pre>
 <p>Create a summary plot using <code>plot_summary</code> in SWMPr. This plot is a multi-panel collection of ggplot objects that can be used to quickly evaluate a variable over time.</p>
 <pre class="r"><code># summary plot using the nutrient data
 plot_summary(apacpnut, &#39;chla_n&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-32-1.pdf" title="" alt="" width="\textwidth" /></p>
+<p><embed src="figures/unnamed-chunk-32-1.pdf" /></p>
 <p>The <code>overplot</code> function can plot more than one variable on the same axis.</p>
 <pre class="r"><code># plot multiple variables on the same axis
 overplot(dat, select = c(&#39;do_mgl&#39;, &#39;temp&#39;),
  subset = c(&#39;2013-01-01 0:0&#39;, &#39;2013-02-01 0:0&#39;), lwd = 2)</code></pre>
-<p><img src="figures/unnamed-chunk-33-1.pdf" title="" alt="" width="\textwidth" /></p>
+<p><embed src="figures/unnamed-chunk-33-1.pdf" /></p>
 <p>Time series decomposition can be accomplished with <code>decomp</code> or <code>decomp_cj</code>. Both are similar and return a plot of decomposed time series from the original.</p>
 <pre class="r"><code># decompose the chlorophyll time series
 decomp_cj(apacpnut, param = &#39;chla_n&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-34-1.pdf" title="" alt="" width="\textwidth" /></p>
+<p><embed src="figures/unnamed-chunk-34-1.pdf" /></p>
 </div>
 <div id="saving-graphics" class="section level2">
 <h2>Saving graphics</h2>
