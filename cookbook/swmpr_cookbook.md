@@ -6,9 +6,13 @@ Oct. 25, 2015
 
 # Introduction
 
-This document provides a collection of instructions and scripts that perform specific tasks for working with SWMP data in R using the SWMPr package.  It provides scripts that use functions from SWMPr, as well as many others available in the base or contributed R packages.  This cookbook is meant to provide participants with a 'go-to' document that builds on content covered in the workshop.  Much of the content can be a considered a basic approach to time series analysis and we encourage the exploration of alternative, more specific methods that are available in R.  Please see the CRAN task view on [time series](http://cran.r-project.org/web/views/TimeSeries.html) for an idea of what is possible.  The data used in these scripts have been included with the SWMPr package installation, excluding the first few scripts that are provided only as templates for your own use.  Please feel free to contact the instructors with questions regarding this cookbook or general questions about time series analysis in R.  We encourage any feedback regarding these documents or the content of the workshop.
+This document provides a collection of instructions and scripts that perform specific tasks for working with SWMP data in R using the SWMPr package.  It provides scripts that use functions from SWMPr, including others available in the base or contributed R packages.  This cookbook is meant as a 'go-to' document that builds on content covered in previous workshops.  Much of the content can be a considered a basic approach to time series analysis and we encourage the exploration of alternative, more specific methods that are available in R.  Please see the CRAN task view on [time series](http://cran.r-project.org/web/views/TimeSeries.html) for an idea of what is possible.  The data used in these scripts have been included with the SWMPr package installation, excluding the first few scripts that are provided only as templates for your own use.  Please feel free to contact us with questions regarding this cookbook or general questions about time series analysis in R.  We encourage any feedback regarding these documents or the content of the workshop.
 
 The SWMPrats website provides additional resources to assist with the analysis of SWMP data, including links to Workshop content: [http://swmprats.net](http://swmprats.net)
+
+# Contributing to the cookbook
+
+We encourage users to submit code snippets or ideas to this cookbook.  If you would like us to include a contribution, please submit an [issue](https://github.com/fawda123/swmp_workshop_2015/issues) on the 2015 workshop page on GitHub.  This submission should include example code and a brief description of its purpose.  
 
 # Basics of R and RStudio
 
