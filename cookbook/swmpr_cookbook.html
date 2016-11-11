@@ -8,18 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Marcus W. Beck, beck.marcus@epa.gov, Todd D. O’Brien, todd.obrien@noaa.gov" />
 
-<meta name="date" content="2015-10-25" />
+<meta name="author" content="Marcus W. Beck, beck.marcus@epa.gov" />
+
+<meta name="date" content="2016-11-10" />
 
 <title>SWMPr cookbook</title>
 
-<script src="swmpr_cookbook_files/jquery-1.11.0/jquery.min.js"></script>
+<script src="swmpr_cookbook_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="swmpr_cookbook_files/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
-<script src="swmpr_cookbook_files/bootstrap-3.3.1/js/bootstrap.min.js"></script>
-<script src="swmpr_cookbook_files/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
-<script src="swmpr_cookbook_files/bootstrap-3.3.1/shim/respond.min.js"></script>
+<link href="swmpr_cookbook_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="swmpr_cookbook_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="swmpr_cookbook_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="swmpr_cookbook_files/bootstrap-3.3.5/shim/respond.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
@@ -41,6 +42,34 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 
 
 
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
 </head>
 
 <body>
@@ -55,18 +84,45 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
 }
 </style>
+
+
+
 <div class="container-fluid main-container">
 
+<!-- tabsets -->
+<script src="swmpr_cookbook_files/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
 
-<div id="header">
-<h1 class="title">SWMPr cookbook</h1>
-<h4 class="author"><em>Marcus W. Beck, <a href="mailto:beck.marcus@epa.gov">beck.marcus@epa.gov</a>, Todd D. O’Brien, <a href="mailto:todd.obrien@noaa.gov">todd.obrien@noaa.gov</a></em></h4>
-<h4 class="date"><em>Oct. 25, 2015</em></h4>
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">SWMPr cookbook</h1>
+<h4 class="author"><em>Marcus W. Beck, <a href="mailto:beck.marcus@epa.gov">beck.marcus@epa.gov</a></em></h4>
+<h4 class="date"><em>NOv. 10, 2016</em></h4>
+
 </div>
 
 <div id="TOC">
@@ -102,7 +158,7 @@ img {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>This document provides a collection of instructions and scripts that perform specific tasks for working with SWMP data in R using the SWMPr package. It provides scripts that use functions from SWMPr, including others available in the base or contributed R packages. This cookbook is meant as a ‘go-to’ document that builds on content covered in previous workshops. Much of the content can be a considered a basic approach to time series analysis and we encourage the exploration of alternative, more specific methods that are available in R. Please see the CRAN task view on <a href="http://cran.r-project.org/web/views/TimeSeries.html">time series</a> for an idea of what is possible. The data used in these scripts have been included with the SWMPr package installation, excluding the first few scripts that are provided only as templates for your own use. Please feel free to contact us with questions regarding this cookbook or general questions about time series analysis in R. We encourage any feedback regarding these documents or the content of the workshop.</p>
-<p>The SWMPrats website provides additional resources to assist with the analysis of SWMP data, including links to Workshop content: <a href="http://swmprats.net"><a href="http://swmprats.net" class="uri">http://swmprats.net</a></a></p>
+<p>The SWMPrats website provides additional resources to assist with the analysis of SWMP data, including links to Workshop content: <a href="http://swmprats.net" class="uri">http://swmprats.net</a></p>
 </div>
 <div id="contributing-to-the-cookbook" class="section level1">
 <h1>Contributing to the cookbook</h1>
@@ -409,16 +465,16 @@ sub_dat &lt;-  subset(dat, subset = c(&#39;2012-07-09 00:00&#39;, &#39;2012-07-2
 
 # plot with points
 plot(do_mgl ~ datetimestamp, data = sub_dat)</code></pre>
-<p><img src="figures/unnamed-chunk-20-1.png" /></p>
+<p><img src="figures/unnamed-chunk-20-1.png" /><!-- --></p>
 <pre class="r"><code># plot with lines
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-20-2.png" /></p>
+<p><img src="figures/unnamed-chunk-20-2.png" /><!-- --></p>
 <pre class="r"><code># changing the default arguments, add points to graph
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;, col = 
     &#39;orange&#39;, xlab = &#39;&#39;, ylab = &#39;Dissolved oxygen (mg/L)&#39;,
   cex.axis = 0.8, bty = &#39;n&#39;)
 points(sub_dat$datetimestamp, sub_dat$do_mgl, pch = 16, cex = 0.5)</code></pre>
-<p><img src="figures/unnamed-chunk-20-3.png" /></p>
+<p><img src="figures/unnamed-chunk-20-3.png" /><!-- --></p>
 <p>Multiple plots in the same window.</p>
 <pre class="r"><code># it is often useful to open a new plot window, uncomment and run the next line
 # windows()
@@ -429,7 +485,7 @@ par(mfrow = c(3, 1))
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)
 plot(temp ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)
 plot(atemp ~ datetimestamp, data = sub_dat, type = &#39;l&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-21-1.png" /></p>
+<p><img src="figures/unnamed-chunk-21-1.png" /><!-- --></p>
 <p>Diagnostics plots.</p>
 <pre class="r"><code># subset for the example
 sub_dat &lt;- subset(dat, select = c(&#39;sal&#39;, &#39;temp&#39;, &#39;do_mgl&#39;), 
@@ -439,15 +495,24 @@ sub_dat &lt;- subset(dat, select = c(&#39;sal&#39;, &#39;temp&#39;, &#39;do_mgl&
 # a pairs plot is a matrix of bivariate scatterplots
 # caution, this plot may take a while to load for large datasets
 pairs(sub_dat)</code></pre>
-<p><img src="figures/diag_plots.png" /></p>
+<div class="figure">
+<img src="figures/diag_plots.png" />
+
+</div>
 <pre class="r"><code># histograms
 hist(sub_dat$sal, xlab = &#39;Salinity&#39;, main = &#39;Histogram&#39;)</code></pre>
-<p><img src="figures/hist.png" /></p>
+<div class="figure">
+<img src="figures/hist.png" />
+
+</div>
 <pre class="r"><code># boxplots
 # must remove datetimestamp
 to_plo &lt;- data.frame(sub_dat)[, -1]
 boxplot(to_plo)</code></pre>
-<p><img src="figures/box.png" /></p>
+<div class="figure">
+<img src="figures/box.png" />
+
+</div>
 <p>A boxplot of aggregation results.</p>
 <pre class="r"><code># aggregate by DO by seasons/quarters
 to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;, 
@@ -455,7 +520,10 @@ to_plo &lt;- aggreswmp(dat, by = &#39;quarters&#39;, params = &#39;do_mgl&#39;,
 
 # plot
 boxplot(do_mgl ~ datetimestamp, data = to_plo, ylab = &#39;DO (mg/L)&#39;)</code></pre>
-<p><img src="figures/box_agg.png" /></p>
+<div class="figure">
+<img src="figures/box_agg.png" />
+
+</div>
 </div>
 <div id="plotting-with-ggplot2" class="section level2">
 <h2>Plotting with ggplot2</h2>
@@ -483,7 +551,7 @@ p &lt;- ggplot(to_plo, aes(x = datetimestamp, y = value)) +
   facet_wrap(~ variable, ncol = 1, scales = &#39;free_y&#39;) + 
   theme_bw()
 p</code></pre>
-<p><img src="figures/unnamed-chunk-29-1.png" /></p>
+<p><img src="figures/unnamed-chunk-29-1.png" /><!-- --></p>
 <p>Using aggregation and ggplot2 to plot multiple variables.</p>
 <pre class="r"><code># aggregate by season
 agg_dat &lt;- aggreswmp(dat, by = &#39;quarters&#39;, 
@@ -499,26 +567,32 @@ p &lt;- ggplot(to_plo, aes(x = factor(datetimestamp), y = value)) +
   theme_bw() +
   theme(axis.text.x = element_text(size = 5))
 p</code></pre>
-<p><img src="figures/unnamed-chunk-30-1.png" /></p>
+<p><img src="figures/unnamed-chunk-30-1.png" /><!-- --></p>
 </div>
 <div id="plotting-functions-in-swmpr" class="section level2">
 <h2>Plotting functions in SWMPr</h2>
 <p>The <code>map_reserve</code> function uses the ggmap package to create a plot of the stations at a reserve. The ggmap package should install and load automatically when you use SWMPr. You will have to play with the <code>zoom</code> argument as the spatial extent varies at each reserve.</p>
 <pre class="r"><code>map_reserve(&#39;jac&#39;, zoom = 11)</code></pre>
-<p><img src="figures/unnamed-chunk-31-1.png" /></p>
+<p><img src="figures/unnamed-chunk-31-1.png" /><!-- --></p>
 <p>Create a summary plot using <code>plot_summary</code> in SWMPr. This plot is a multi-panel collection of ggplot objects that can be used to quickly evaluate a variable over time.</p>
 <pre class="r"><code># summary plot using the nutrient data
 plot_summary(apacpnut, &#39;chla_n&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-32-1.png" /></p>
+<p><img src="figures/unnamed-chunk-32-1.png" /><!-- --></p>
 <p>The <code>overplot</code> function can plot more than one variable on the same axis.</p>
 <pre class="r"><code># plot multiple variables on the same axis
 overplot(dat, select = c(&#39;do_mgl&#39;, &#39;temp&#39;),
  subset = c(&#39;2013-01-01 0:0&#39;, &#39;2013-02-01 0:0&#39;), lwd = 2)</code></pre>
-<p><img src="figures/unnamed-chunk-33-1.png" /></p>
+<p><img src="figures/unnamed-chunk-33-1.png" /><!-- --></p>
 <p>Time series decomposition can be accomplished with <code>decomp</code> or <code>decomp_cj</code>. Both are similar and return a plot of decomposed time series from the original.</p>
 <pre class="r"><code># decompose the chlorophyll time series
 decomp_cj(apacpnut, param = &#39;chla_n&#39;)</code></pre>
-<p><img src="figures/unnamed-chunk-34-1.png" /></p>
+<p><img src="figures/unnamed-chunk-34-1.png" /><!-- --></p>
+<p>The <code>wind_rose</code> function summarizes wind data as a wind rose using SWMP weather data. This function is a convenience wrapper to <code>windRose</code> in the <a href="https://cran.r-project.org/web/packages/openair/index.html">openair</a> package. Most of the arguments are taken directly from this function.</p>
+<pre class="r"><code># plot a wind rose 
+plot_wind(apaebmet)</code></pre>
+<p><img src="figures/unnamed-chunk-35-1.png" /><!-- --></p>
+<pre class="r"><code>plot_wind(apaebmet, type = &#39;month&#39;)</code></pre>
+<p><img src="figures/unnamed-chunk-35-2.png" /><!-- --></p>
 </div>
 <div id="saving-graphics" class="section level2">
 <h2>Saving graphics</h2>
@@ -546,6 +620,8 @@ dev.off()</code></pre>
 </div>
 
 
+
+
 </div>
 
 <script>
@@ -554,6 +630,7 @@ dev.off()</code></pre>
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 

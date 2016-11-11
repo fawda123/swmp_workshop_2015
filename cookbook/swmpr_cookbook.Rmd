@@ -5,8 +5,8 @@ output:
     keep_md: yes
     toc: true
     self_contained: no
-author: "Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov"
-date: "Oct. 25, 2015"
+author: "Marcus W. Beck, beck.marcus@epa.gov"
+date: "NOv. 10, 2016"
 ---
 
 ```{r setup, include=FALSE}
@@ -586,6 +586,14 @@ Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Bot
 ```{r, fig.height = 6, fig.width = 6, warning = F}
 # decompose the chlorophyll time series
 decomp_cj(apacpnut, param = 'chla_n')
+```
+
+The `wind_rose` function summarizes wind data as a wind rose using SWMP weather data. This function is a convenience wrapper to `windRose` in the [openair](https://cran.r-project.org/web/packages/openair/index.html) package. Most of the arguments are taken directly from this function.
+
+```{r, fig.height = 6, fig.width = 6, warning = F}
+# plot a wind rose 
+plot_wind(apaebmet)
+plot_wind(apaebmet, type = 'month')
 ```
 
 ## Saving graphics

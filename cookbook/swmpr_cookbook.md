@@ -1,6 +1,6 @@
 # SWMPr cookbook
-Marcus W. Beck, beck.marcus@epa.gov, Todd D. O'Brien, todd.obrien@noaa.gov  
-Oct. 25, 2015  
+Marcus W. Beck, beck.marcus@epa.gov  
+NOv. 10, 2016  
 
 
 
@@ -420,14 +420,14 @@ sub_dat <-  subset(dat, subset = c('2012-07-09 00:00', '2012-07-24 00:00'))
 plot(do_mgl ~ datetimestamp, data = sub_dat)
 ```
 
-![](figures/unnamed-chunk-20-1.png) 
+![](figures/unnamed-chunk-20-1.png)<!-- -->
 
 ```r
 # plot with lines
 plot(do_mgl ~ datetimestamp, data = sub_dat, type = 'l')
 ```
 
-![](figures/unnamed-chunk-20-2.png) 
+![](figures/unnamed-chunk-20-2.png)<!-- -->
 
 ```r
 # changing the default arguments, add points to graph
@@ -437,7 +437,7 @@ plot(do_mgl ~ datetimestamp, data = sub_dat, type = 'l', col =
 points(sub_dat$datetimestamp, sub_dat$do_mgl, pch = 16, cex = 0.5)
 ```
 
-![](figures/unnamed-chunk-20-3.png) 
+![](figures/unnamed-chunk-20-3.png)<!-- -->
 
 Multiple plots in the same window.
 
@@ -454,7 +454,7 @@ plot(temp ~ datetimestamp, data = sub_dat, type = 'l')
 plot(atemp ~ datetimestamp, data = sub_dat, type = 'l')
 ```
 
-![](figures/unnamed-chunk-21-1.png) 
+![](figures/unnamed-chunk-21-1.png)<!-- -->
 
 Diagnostics plots.
 
@@ -534,7 +534,7 @@ p <- ggplot(to_plo, aes(x = datetimestamp, y = value)) +
 p
 ```
 
-![](figures/unnamed-chunk-29-1.png) 
+![](figures/unnamed-chunk-29-1.png)<!-- -->
 
 Using aggregation and ggplot2 to plot multiple variables.
 
@@ -556,7 +556,7 @@ p <- ggplot(to_plo, aes(x = factor(datetimestamp), y = value)) +
 p
 ```
 
-![](figures/unnamed-chunk-30-1.png) 
+![](figures/unnamed-chunk-30-1.png)<!-- -->
 
 ## Plotting functions in SWMPr
 
@@ -567,7 +567,7 @@ The `map_reserve` function uses the ggmap package to create a plot of the statio
 map_reserve('jac', zoom = 11)
 ```
 
-![](figures/unnamed-chunk-31-1.png) 
+![](figures/unnamed-chunk-31-1.png)<!-- -->
 
 Create a summary plot using `plot_summary` in SWMPr.  This plot is a multi-panel collection of ggplot objects that can be used to quickly evaluate a variable over time.
 
@@ -577,7 +577,7 @@ Create a summary plot using `plot_summary` in SWMPr.  This plot is a multi-panel
 plot_summary(apacpnut, 'chla_n')
 ```
 
-![](figures/unnamed-chunk-32-1.png) 
+![](figures/unnamed-chunk-32-1.png)<!-- -->
 
 The `overplot` function can plot more than one variable on the same axis.  
 
@@ -588,7 +588,7 @@ overplot(dat, select = c('do_mgl', 'temp'),
  subset = c('2013-01-01 0:0', '2013-02-01 0:0'), lwd = 2)
 ```
 
-![](figures/unnamed-chunk-33-1.png) 
+![](figures/unnamed-chunk-33-1.png)<!-- -->
 
 Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Both are similar and return a plot of decomposed time series from the original.
 
@@ -598,7 +598,23 @@ Time series decomposition can be accomplished with `decomp` or `decomp_cj`.  Bot
 decomp_cj(apacpnut, param = 'chla_n')
 ```
 
-![](figures/unnamed-chunk-34-1.png) 
+![](figures/unnamed-chunk-34-1.png)<!-- -->
+
+The `wind_rose` function summarizes wind data as a wind rose using SWMP weather data. This function is a convenience wrapper to `windRose` in the [openair](https://cran.r-project.org/web/packages/openair/index.html) package. Most of the arguments are taken directly from this function.
+
+
+```r
+# plot a wind rose 
+plot_wind(apaebmet)
+```
+
+![](figures/unnamed-chunk-35-1.png)<!-- -->
+
+```r
+plot_wind(apaebmet, type = 'month')
+```
+
+![](figures/unnamed-chunk-35-2.png)<!-- -->
 
 ## Saving graphics
 
