@@ -6,7 +6,7 @@ output:
     toc: true
     self_contained: no
 author: "Marcus W. Beck, beck.marcus@epa.gov"
-date: "NOv. 10, 2016"
+date: "Nov. 10, 2016"
 ---
 
 ```{r setup, include=FALSE}
